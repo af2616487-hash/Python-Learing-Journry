@@ -1,7 +1,24 @@
 # Variables and Data Types in Python
 
 ## Overview
-Variables are containers for storing data values. Python is dynamically typed, meaning you don't need to declare the type of a variable explicitly. Different data types include integers, floats, strings, booleans, and more.
+This module covers the fundamental building blocks of Python programming: variables, data types, type casting, and operators. You will learn how Python handles different data types (integers, floats, strings, booleans), how to convert between types, perform arithmetic and logical operations, and apply these concepts to solve real-world problems.
+
+**Key Topics Covered:**
+- **Variables:** Understanding variable naming conventions, case sensitivity, and data storage
+- **Data Types:** Working with integers, floats, strings, booleans, and type identification
+- **Type Casting:** Converting values between different data types using int(), float(), str(), bool()
+- **String Operations:** String concatenation and manipulation techniques
+- **Arithmetic Operations:** Basic mathematical operations on numeric data types
+- **Logical Operators:** Using and, or, not operators for boolean logic
+- **Practical Applications:** Real-world problems like temperature conversion, interest calculation, path construction, and data type classification
+
+**Learning Outcomes:**
+After completing this module, you will be able to:
+- Create and manipulate variables with proper naming conventions
+- Identify and work with different Python data types
+- Convert data between types when necessary
+- Perform arithmetic and logical operations
+- Solve practical programming problems using these fundamentals
 
 ---
 
@@ -17,119 +34,252 @@ Variables are containers for storing data values. Python is dynamically typed, m
 
 ---
 
-## 1. Variable Case Sensitivity
+## 1. Variable And Data Type
 
 **Concept:** Variables in Python are case-sensitive. `x` and `X` are different variables.
 
 ```python
-# CODE BLOCK 1 - Add your code here:
+#code1
+x =int(input())
+X =int(input())
+print("Value of x:",x)
+print("Value of x:",X)
 
+#code2
+greeting = "Hello"
+name = input()
+
+print(greeting + ", " + name + "!")
+
+#code3
+A = str(input())
+print(A)
+
+#code4
+a = float(input())
+print(a * a)
+
+#code5
+celsius = float(input())
+fahren = (celsius * 9/5) + 32
+print(fahren)
+
+#code6
+x = int(input())
+y = float(input())
+z = int(input())
+print(x + y + z)
+product = x * y * z
+print(f"{product:.2f}")
+
+#code7
+import sys
+
+def solve():
+    data = sys.stdin.read().strip()
+    
+    if data == "True" or data == "False":
+        print("Boolean")
+        
+    elif data.isdigit():
+        print("Integer")
+        
+    elif data.count('.') == 1:
+        parts = data.split('.')
+        if (parts[0].isdigit() or parts[0] == "") and (parts[1].isdigit() or parts[1] == ""):
+            if data != ".":
+                print("Float")
+            else:
+                print("String")
+        else:
+            print("String")
+            
+    else:
+        print("String")
+
+if __name__ == "__main__":
+    solve()
+
+#code8 
+folder_name = input()
+subfolder_name = input()
+file_base_name = input()
+drive_number = int(input())
+file_extension = input()
+separator_type = input()
+
+full_file_name = file_base_name + file_extension
+forward_sep = "/"
+backward_sep = "\\\\"
+
+drive3 = 'D'
+drive4 = 'F'
+drive5 = 'H'
+drive6 = 'J'
+drive7 = 'L'
+drive8 = 'N'
+drive9 = 'P'
+drive10 = 'R'
+
+drive_letter = (drive_number == 3) * drive3 + (drive_number == 4) * drive4 + (drive_number == 5) * drive5 + (drive_number == 6) * drive6 + (drive_number == 7) * drive7 + (drive_number == 8) * drive8 + (drive_number == 9) * drive9 + (drive_number == 10) * drive10
+
+linux_path = forward_sep + folder_name + forward_sep + subfolder_name + forward_sep + full_file_name
+windows_path = drive_letter + ":\\\\" + folder_name + "\\\\" + subfolder_name + "\\\\" + full_file_name
+
+final_path = (separator_type == "forward") * linux_path + (separator_type == "backward") * windows_path
+print(final_path)
 ```
 
 ---
 
-## 2. String Concatenation
-
-**Concept:** Combining strings using the concatenation operator `+`.
+## 2. Type-Casting
 
 ```python
-# CODE BLOCK 2 - Add your code here:
+#code1
+principal = int(input())
+rate = int(input())
+time = int(input())
+
+simple_intereast = (principal * rate * time) / 100
+
+print(simple_intereast)
+
+#code2
+n = int(input())
+
+result = (n * (n + 1) // 2) **2
+
+print(result)
+
+#code3
+n = int(input())
+
+print(float(n))
+
+#code4
+n = input()
+
+total = 0
+
+for c in n:
+  total += int(c)
+  
+print(total)
+
+#code5
+n = input().strip('"')
+
+print(int(n))
+
+#code6
+str_int = input()
+f_num = float(input())
+str_float = input()
+
+value1 = float(str_int)
+value2 = float(f_num)
+value3 = float(str_float)
+
+largest = max(value1, value2, value3)
+
+print(f"{largest:.2f}")
+
+#code7
+data = input().split()
+
+a = int(data[0])
+b = int(data[1])
+
+result1 = a // b 
+
+result2 = float(a) / float(b)
+
+print(result1)
+print(f"{result2:.2f}")
+
+#code8 
+data = input().split()
+
+val1_str = data[0].strip('"')
+val2_float = data[1].strip('"')
+val3_int = data[2].strip('"')
+
+converting_float = float(val1_str)
+
+converting_integer = int(float(val2_float))
+
+converting_string = str(val3_int)
+
+print(converting_float)
+print(converting_integer)
+print(f'"{converting_string}"')
 
 ```
 
 ---
 
-## 3. String Data Type
-
-**Concept:** Strings are sequences of characters enclosed in quotes. The `str()` function converts values to strings.
+## 3. Operators
 
 ```python
-# CODE BLOCK 3 - Add your code here:
+n = int(input())
+m = float(input())
+t = str(input())
+
+print(n)
+print(m)
+print(t)
+
+#2
+a = int(input())
+b = int(input())
+
+print(a == b)
+print(a != b)
+print(a > b)
+print(a < b)
+print(a >= b)
+print(a <= b)
+
+#3
+a = int(input())
+b = int(input())
+
+print(a == b)
+
+#4
+a_int = int(input())
+b_int = int(input())
+
+a = bool(a_int)
+b = bool(b_int)
+
+print(a and b)
+print(a or b)
+print(not a)
+print(not b)
+
+#5
+expre = input()
+
+result = eval(expre)
+
+print(float(result))
+
+#6
+a = input().strip()
+b = input().strip()
+
+user = (a == "True")
+pass_ = (b == "True")
+
+both_correct = user and pass_
+
+any_one_incorrect = (not user) or (not pass_)
+
+print(both_correct)
+print(any_one_incorrect)
+
 
 ```
 
 ---
-
-## 4. Float Arithmetic Operations
-
-**Concept:** Floating-point numbers support arithmetic operations like multiplication, division, etc.
-
-```python
-# CODE BLOCK 4 - Add your code here:
-
-```
-
----
-
-## 5. Temperature Conversion
-
-**Concept:** Converting temperature from Celsius to Fahrenheit using the formula: (C × 9/5) + 32
-
-```python
-# CODE BLOCK 5 - Add your code here:
-
-```
-
----
-
-## 6. Mixed Data Type Operations
-
-**Concept:** Python allows operations between different numeric types (int + float). The result is automatically converted to float.
-
-```python
-# CODE BLOCK 6 - Add your code here:
-
-```
-
----
-
-## 7. Data Type Classification
-
-**Concept:** Detecting and classifying input data types - Boolean, Integer, Float, or String.
-
-```python
-# CODE BLOCK 7 - Add your code here:
-
-```
-
----
-
-## 8. File Path Construction
-
-**Concept:** Building dynamic file paths by combining multiple variables. Paths can use forward slashes (Linux) or backslashes (Windows).
-
-```python
-# CODE BLOCK 8 - Add your code here:
-
-```
-
----
-
-## Key Concepts Summary
-
-| Concept | Description |
-|---------|-------------|
-| **Variables** | Named containers that store values |
-| **Case Sensitivity** | `x` and `X` are different variables |
-| **String Concatenation** | Joining strings with `+` operator |
-| **Type Conversion** | Converting between int(), float(), str() |
-| **Arithmetic Operations** | +, -, *, /, //, **, % |
-| **Data Types** | int, float, str, bool, list, dict, tuple |
-
----
-
-## Quick Reference
-
-- **Integer:** `x = 10`
-- **Float:** `x = 10.5`
-- **String:** `x = "Hello"`
-- **Boolean:** `x = True`
-- **Type Checking:** `type(x)` returns the data type
-
----
-
-## Practice Notes
-
-Each code block above is a placeholder where you can add your own code examples. Try modifying the examples to understand how different data types behave in Python!
-
-**Happy Learning! 🎉**
