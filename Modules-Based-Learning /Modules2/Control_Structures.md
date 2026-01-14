@@ -21,41 +21,125 @@ Statements
 **Concept:** Conditional statements allow you to execute different code blocks based on different conditions. If-elif-else statements provide multiple condition branches.
 
 ```python
-x = int(input('Enter a number: '))
-if x > 0:
-    print('Positive number')
-elif x < 0:
-    print('Negative number')
-else:
-    print('Zero')
+#Code1)
+nums = list(map(int, input().split()))
+target = int(input())
 
+found = False
 
-age = int(input('Enter age: '))
-if age >= 18:
-    if age < 60:
-        print('Adult')
+for i in range(len(nums)):
+    if nums[i] == target:
+        print(f"Number found at index {i}")
+        found = True
+        break
+
+if not found:
+    print("Number not found")
+
+#Code2) 
+n = int(input())
+
+for i in range(1, n + 1):
+    if i % 2 == 0:
+        continue
+    print(i, end=" ")
+
+#Code3)
+n = int(input())
+m = int(input())
+
+for i in range(n, m + 1):
+    if i == 3:
+        print("Skip 3!")
+        pass
     else:
-        print('Senior')
+        print(i)
+
+#Code4)
+n, m = map(int, input().split())
+
+for i in range(n, m + 1):
+    if i == 3:
+        print("Skipping number 3!")
+        pass
+    else:
+        print(i)
+
+#Code5) 
+n = int(input())
+
+result = []
+
+for i in range(1, n + 1):
+    if i > 10:
+        break
+    if i % 2 == 0:
+        continue
+    result.append(str(i))
+
+print(" ".join(result))
+
+#Code6) 
+n = int(input())
+
+total = 0
+
+for i in range(1, n + 1):
+    if i % 2 == 0:
+        continue
+    total += i
+
+print(total)
+
+#Code7) 
+count = 0
+
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    if n <= 0:
+        pass
+    else:
+        count += 1
+
+print(count)
+
+
+#Code8) 
+n, k = map(int, input().split())
+commands = [input().strip() for _ in range(n)]
+
+escaped = False
+i = 0
+
+while i < n:
+    cmd = commands[i]
+
+    if cmd == "MOVE":
+        i += 1
+        continue
+
+    elif cmd == "JUMP":
+        i += k + 1
+        continue
+
+    elif cmd == "IGNORE":
+        pass
+
+    elif cmd == "BLOCK":
+        break
+
+    elif cmd == "END":
+        escaped = True
+        break
+
+    i += 1
+
+if escaped:
+    print("ESCAPED")
 else:
-    print('Minor')
-
-
-
-
-
-# code4
-
-
-# code5
-
-
-# code6
-
-
-# code7
-
-
-# code8
+    print("TRAPPED")
 
 ```
 
@@ -64,28 +148,73 @@ else:
 **Concept:** For loops are used to iterate over sequences (like lists, strings, ranges). They execute a block of code a specific number of times.
 
 ```python
-# code1
+#Code1
+n = int(input())
+
+for i in range(2, n + 1, 2):
+  print(i)
+  
+#Code2
+n = int(input())
+m = int(input())
+
+for i in range(m):
+  print(n)
+
+#Code3
+n = int(input())
+
+for i in range(n):
+  print(i + 1)
+
+#Code4
+n = int(input())
+
+for i in range(1, n + 1, 2):
+  print(i)
+
+#Code6
+n = int(input())
+total_sum = 0
+
+for i in range(1, n + 1):
+  total_sum += i * i
+  
+print(total_sum)
+
+#Code7
+n = int(input())
+
+numbers = list(map(int, input().split()))
 
 
-# code2
+reversed_number = []
 
+for i in range(n - 1, -1, -1):
+  reversed_number.append(str(numbers[i]))
+  
+print(" ".join(reversed_number))
 
-# code3
+#Code8 
+n = int(input())
+temp = n 
+prime_power_sum = 0
+d = 2
 
+while d * d <= temp:
+  if temp % d == 0:
+    current_factor_value = 1 
+    while temp % d == 0:
+      current_factor_value *= d 
+      temp //= d 
+    prime_power_sum += current_factor_value
+  d += 1 
+  
+if temp > 1:
+  prime_power_sum += temp
+  
+print(prime_power_sum)
 
-# code4
-
-
-# code5
-
-
-# code6
-
-
-# code7
-
-
-# code8
 
 ```
 
@@ -94,177 +223,342 @@ else:
 **Concept:** While loops repeat as long as a condition is true. They are useful when you don't know how many times you need to iterate.
 
 ```python
-# code1
+#Code1
+n = int(input())
+i = 0
+
+while n >= 1:
+  print(n, end=" ")
+  n = n - 1
 
 
-# code2
+#Code2
+n = int(input())
+i = 1
 
+while i <= n:
+  print(i)
+  i = i + 1
 
-# code3
+#Code3
+n = int(input())
+i = 1
 
+while i <= n:
+  print("Hello")
+  i = i + 1
 
-# code4
+#Code4
+n = int(input())
+i = 2
 
+while i <= n:
+  print(i)
+  i = i + 2
 
-# code5
+#Code5
+n = int(input())
 
+totalsum = 0
+i = 1 
 
-# code6
+while i <= n:
+  totalsum = totalsum + i 
+  i =  i + 1 
+  
+print(totalsum)
 
+#Code6
+n = int(input())
 
-# code7
+if n < 1:
+  print("Error: Factorial is not defined for negative numbers")
+else:
+  Factorial = 1 
+  i = n 
+  
+  while i >= 1:
+    Factorial = Factorial * i 
+    i = i - 1 
 
+print(Factorial)
 
-# code8
+#Code7
+n = int(input())
+
+if n < 0:
+  print("Error: Sum of digits is not defined for negative numbers.")
+else:
+  digitsum = 0
+  
+  while n > 0:
+    digit = n % 10
+    digitsum += digit
+    n = n // 10
+
+print(digitsum)
+
+#Code8 
+n = int(input())
+
+factor = 2
+
+while factor * factor <= n:
+  if n % factor == 0:
+    n //= factor
+  else:
+    factor += 1 
+
+print(n)
+
 
 ```
 
-## 4. Break and Continue
-
-**Concept:** Break terminates a loop, while continue skips the current iteration. These statements give you fine control over loop execution.
-
-```python
-# code1
-
-
-# code2
-
-
-# code3
-
-
-# code4
-
-
-# code5
-
-
-# code6
-
-
-# code7
-
-
-# code8
-
-```
-
-## 5. Nested Loops
+## 4. Nested Loops
 
 **Concept:** Nested loops are loops inside loops. They are useful for working with multidimensional data structures or creating patterns.
 
 ```python
-# code1
+#Code1)
+n = int(input())
+m = int(input())
 
+for i in range(n):
+    for j in range(m):
+        print(f"Outer: {i}, Inner: {j}")
 
-# code2
+#Code2)
+n = int(input())
 
+for i in range(1, n + 1):
+    print(" " * (n - i), end="")
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()
 
-# code3
+#Code3)
+rows = int(input())
+cols = int(input())
 
+for i in range(rows):
+    for j in range(1, cols + 1):
+        print(j, end=" ")
+    print()
 
-# code4
+#Code4)
+n, m = map(int, input().split())
 
+for i in range(n):
+    print("*" * m)
 
-# code5
+#Code5)
+n = int(input())
 
+for i in range(n):
+    print("*" * n)
 
-# code6
+#Code6)
+n = int(input())
 
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        print(i * j, end=" ")
+    print()
+#Code7)
+n = int(input())
 
-# code7
+grid = [[i * n + j + 1 for j in range(n)] for i in range(n)]
 
+total_sum = 0
 
-# code8
+for d in range(2 * n - 1):
+    elements = []
+    for i in range(n):
+        j = d - i
+        if 0 <= j < n:
+            elements.append(grid[i][j])
+    if d % 2 == 0:
+        elements.reverse()
+    for val in elements:
+        total_sum += val
+
+print(total_sum)
+
+#Code8)
+n = int(input())
+matrix = []
+
+i = 0
+while i < n:
+    matrix.append(list(map(int, input().split())))
+    i += 1
+
+top = 0
+bottom = n - 1
+left = 0
+right = n - 1
+
+result = []
+
+while top <= bottom and left <= right:
+    j = left
+    while j <= right:
+        result.append(matrix[top][j])
+        j += 1
+    top += 1
+
+    i = top
+    while i <= bottom:
+        result.append(matrix[i][right])
+        i += 1
+    right -= 1
+
+    if top <= bottom:
+        j = right
+        while j >= left:
+            result.append(matrix[bottom][j])
+            j -= 1
+        bottom -= 1
+
+    if left <= right:
+        i = bottom
+        while i >= top:
+            result.append(matrix[i][left])
+            i -= 1
+        left += 1
+
+k = 0
+while k < len(result):
+    print(result[k], end=" ")
+    k += 1
+
 
 ```
 
-## 6. Loop Patterns
+## 5. Control Statements: break, continue, pass
 
 **Concept:** Common loop patterns include summing, counting, searching, and filtering. Understanding these patterns helps solve many problems efficiently.
 
 ```python
-# code1
+#Code1)
+nums = list(map(int, input().split()))
+target = int(input())
+
+found = False
+
+for i in range(len(nums)):
+    if nums[i] == target:
+        print(f"Number found at index {i}")
+        found = True
+        break
+
+if not found:
+    print("Number not found")
+
+#Code2) 
+n = int(input())
+
+for i in range(1, n + 1):
+    if i % 2 == 0:
+        continue
+    print(i, end=" ")
+
+#Code3)
+n = int(input())
+m = int(input())
+
+for i in range(n, m + 1):
+    if i == 3:
+        print("Skip 3!")
+        pass
+    else:
+        print(i)
+
+#Code4)
+n, m = map(int, input().split())
+
+for i in range(n, m + 1):
+    if i == 3:
+        print("Skipping number 3!")
+        pass
+    else:
+        print(i)
+
+#Code5) 
+n = int(input())
+
+result = []
+
+for i in range(1, n + 1):
+    if i > 10:
+        break
+    if i % 2 == 0:
+        continue
+    result.append(str(i))
+
+print(" ".join(result))
+
+#Code6) 
+n = int(input())
+
+total = 0
+
+for i in range(1, n + 1):
+    if i % 2 == 0:
+        continue
+    total += i
+
+print(total)
+
+#Code7) 
+count = 0
+
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    if n <= 0:
+        pass
+    else:
+        count += 1
+
+print(count)
 
 
-# code2
+#Code8) 
+n, k = map(int, input().split())
+commands = [input().strip() for _ in range(n)]
 
+escaped = False
+i = 0
 
-# code3
+while i < n:
+    cmd = commands[i]
 
+    if cmd == "MOVE":
+        i += 1
+        continue
 
-# code4
+    elif cmd == "JUMP":
+        i += k + 1
+        continue
 
+    elif cmd == "IGNORE":
+        pass
 
-# code5
+    elif cmd == "BLOCK":
+        break
 
+    elif cmd == "END":
+        escaped = True
+        break
 
-# code6
+    i += 1
 
-
-# code7
-
-
-# code8
+if escaped:
+    print("ESCAPED")
+else:
+    print("TRAPPED")
 
 ```
 
-## 7. Range Function
-
-**Concept:** The range() function generates a sequence of numbers. It's commonly used with for loops to iterate a specific number of times.
-
-```python
-# code1
-
-
-# code2
-
-
-# code3
-
-
-# code4
-
-
-# code5
-
-
-# code6
-
-
-# code7
-
-
-# code8
-
-```
-
-## 8. Loop Control Applications
-
-**Concept:** Practical applications of loop control include validating input, searching for values, transforming data, and solving mathematical problems.
-
-```python
-# code1
-
-
-# code2
-
-
-# code3
-
-
-# code4
-
-
-# code5
-
-
-# code6
-
-
-# code7
-
-
-# code8
-
-```
