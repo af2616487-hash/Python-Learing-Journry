@@ -1,6 +1,6 @@
 # Variables and Data Types in Python
 
-<img src="https://img.shields.io/badge/Plan_Build_Deploy-Bytexl-00D4FF?style=for-the-badge&logoColor=white" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=2000&color=00D4FF&center=true&width=900&lines=Plan;Build;Deploy;With+Bytexl" />
 
 ## Overview
 Learn the fundamentals of Python: variables, data types, type casting, and operators. Master working with integers, floats, strings, booleans, and apply these concepts through practical examples like temperature conversion and data classification.
