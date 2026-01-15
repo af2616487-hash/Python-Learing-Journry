@@ -1,5 +1,7 @@
 # Control Structures in Python
 
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=2000&color=00D4FF&center=true&width=900&lines=%F0%9F%93%8B+Plan+%F0%9F%8F%97%EF%B8%8F+Build+%F0%9F%9A%80+Deploy+%F0%9F%92%8E+Bytexl" />
+
 ## Overview
 
 Master conditional statements, loops, and decision-making in Python. Learn how to use if-elif-else statements, while and for loops, loop control statements (break, continue), and apply these concepts to solve practical problems involving iterations and conditions.
