@@ -1,5 +1,28 @@
 # Introduction to Data Structures
 
+## Overview
+
+This module provides a comprehensive introduction to fundamental data structures in Python. Data structures are essential building blocks of programming that allow you to organize, store, and manipulate data efficiently. Understanding different data structures and their properties is crucial for writing optimized and scalable code.
+
+### What You Will Learn:
+
+- **Lists**: Ordered, mutable collections that can store multiple items
+- **Tuples**: Immutable sequences ideal for fixed collections and dictionary keys
+- **Sets**: Unordered collections of unique elements, perfect for membership testing
+- **Dictionaries**: Key-value mappings for fast data retrieval and organization
+- **Strings**: Immutable sequences of characters for text data
+- **Nested Structures**: Combining data structures for complex data representation
+
+### Key Concepts:
+
+1. **Mutability**: Whether data can be changed after creation
+2. **Ordering**: Whether elements maintain insertion order
+3. **Uniqueness**: Whether duplicate elements are allowed
+4. **Performance**: Time complexity for common operations
+5. **Use Cases**: When and where to use each structure
+
+---
+
 Yeh module Python mein data structures ko detail mein samajhata hai. Data structures fundamentals hain jo effective programming ke liye zaroori hain.
 
 ## 1. Lists (Ordered & Mutable)
