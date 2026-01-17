@@ -121,44 +121,61 @@ for i in range(1, len(prices) - 1):
 print(peaks)
 
 #8 
-def is_prime(n):
-    if n < 2: return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0: return False
-    return True
+import sys
 
-raw_data = list(map(int, input().split()))
-original_len = len(raw_data)
+data = sys.stdin.read().split()
+if not data:
+    sys.exit()
 
-cleaned_list = []
-if raw_data:
-    cleaned_list.append(raw_data[0])
-    for i in range(1, len(raw_data)):
-        if raw_data[i] != raw_data[i-1]:
-            cleaned_list.append(raw_data[i])
+n_orig = int(data[0])
+raw = [int(x) for x in data[1:]]
 
-extracted_list = []
-for idx in range(len(cleaned_list)):
-    if is_prime(idx):
-        extracted_list.append(cleaned_list[idx])
+cleaned = []
+if raw:
+    cleaned.append(raw[0])
+    for i in range(1, len(raw)):
+        if raw[i] != raw[i-1]:
+            cleaned.append(raw[i])
 
-final_processed = []
-for i in range(len(extracted_list)):
-    val = extracted_list[i]
+extracted = []
+orig_indices = []
+for i in range(2, len(cleaned)):
+    is_prime = True
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            is_prime = False
+            break
+    if is_prime:
+        extracted.append(cleaned[i])
+        orig_indices.append(i)
+
+final_list = []
+for k in range(len(extracted)):
+    val = extracted[k]
     if val < 0:
-        left = 0
-        right = 0
-        final_processed.append(0)
+        pos = orig_indices[k]
+        ln = 0
+        for l in range(pos - 1, -1, -1):
+            if cleaned[l] >= 0:
+                ln = cleaned[l]
+                break
+        rn = 0
+        for r in range(pos + 1, len(cleaned)):
+            if cleaned[r] >= 0:
+                rn = cleaned[r]
+                break
+        final_list.append((ln + rn) // 2)
     else:
-        final_processed.append(val)
+        final_list.append(val)
 
-for i in range(0, len(final_processed), 2):
-    final_processed[i] *= original_len
+for m in range(len(final_list)):
+    if m % 2 == 0:
+        final_list[m] *= n_orig
 
-final_processed.reverse()
+final_list.reverse()
 
-if len(final_processed) > 0 and final_processed[0] == final_processed[-1]:
-    print(final_processed)
+if len(final_list) > 1 and final_list[0] == final_list[-1]:
+    print(final_list)
 else:
     print("Corrupted Signal")
 
