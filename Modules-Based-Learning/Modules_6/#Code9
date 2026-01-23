@@ -1,0 +1,16 @@
+def handle_integer_input():
+    try:
+        user_input = input()
+        
+        number = int(user_input)
+        
+        print(f"You entered the integer: {number}")
+
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+    except TypeError:
+        print("Error: An inappropriate type was encountered.")
+
+if __name__ == "__main__":
+    handle_integer_input()

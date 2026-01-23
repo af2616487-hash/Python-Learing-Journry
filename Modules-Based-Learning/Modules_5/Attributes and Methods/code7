@@ -1,0 +1,32 @@
+class BankAccount:
+    def __init__(self, account_holder):
+        self.account_holder = account_holder
+        self.balance = 0.0
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            return True
+        else:
+            print("Insufficient Balance")
+            return False
+
+    def display(self):
+        print(self.balance)
+
+
+account_holder = input().strip()
+deposit_amount, withdraw_amount = map(int, input().split())
+
+account = BankAccount(account_holder)
+
+account.deposit(deposit_amount)
+success = account.withdraw(withdraw_amount)
+
+if success:
+    account.display()
+else:
+    account.display()

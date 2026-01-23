@@ -1,0 +1,30 @@
+class Employee:
+    def calculate_salary(self):
+        pass
+
+class FullTimeEmployee(Employee):
+    def __init__(self, base_salary, bonus):
+        self.base_salary = base_salary
+        self.bonus = bonus
+    
+    def calculate_salary(self):
+        return self.base_salary + self.bonus
+
+class PartTimeEmployee(Employee):
+    def __init__(self, hours_worked, hourly_wage):
+        self.hours_worked = hours_worked
+        self.hourly_wage = hourly_wage
+    
+    def calculate_salary(self):
+        return self.hours_worked * self.hourly_wage
+
+emp_type = input().strip().lower()
+
+if emp_type == "fulltime":
+    base, bonus = map(int, input().strip().split())
+    emp = FullTimeEmployee(base, bonus)
+elif emp_type == "parttime":
+    hours, wage = map(int, input().strip().split())
+    emp = PartTimeEmployee(hours, wage)
+
+print(emp.calculate_salary())

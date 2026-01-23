@@ -1,0 +1,27 @@
+import sys
+
+def solve():
+    try:
+        data = sys.stdin.read().split()
+        if not data:
+            return
+            
+        a_orig = int(data[0])
+        b_val = int(data[1])
+        a_final = a_orig + b_val
+        is_positive = a_final > 0
+        cond_a_gt_b = (a_final > b_val)
+        cond_a_eq_b_and_even = (a_final == b_val and b_val % 2 == 0)
+        
+        final_condition = cond_a_gt_b or cond_a_eq_b_and_even
+
+        if is_positive and final_condition:
+            print(int(a_final))
+        else:
+            print("Invalid")
+
+    except:
+        print("Invalid")
+
+if __name__ == "__main__":
+    solve()

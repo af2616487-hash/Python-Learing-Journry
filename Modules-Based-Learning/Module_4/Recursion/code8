@@ -1,0 +1,28 @@
+def matrix_multiply(A, B, n):
+  result = [[0]*n for _ in range(n)]
+
+  def multiply_cell(i, j, k):
+      if k == n:
+          return 0
+      return A[i][k] * B[k][j] + multiply_cell(i, j, k + 1)
+
+  def fill_matrix(i, j):
+      if i == n:
+          return
+      if j == n:
+          fill_matrix(i + 1, 0)
+          return
+      result[i][j] = multiply_cell(i, j, 0)
+      fill_matrix(i, j + 1)
+
+  fill_matrix(0, 0)
+  return result
+
+
+n = int(input())
+A = [list(map(int, input().split())) for _ in range(n)]
+B = [list(map(int, input().split())) for _ in range(n)]
+
+res = matrix_multiply(A, B, n)
+for row in res:
+    print(*row)

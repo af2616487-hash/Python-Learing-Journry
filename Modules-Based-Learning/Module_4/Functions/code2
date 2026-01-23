@@ -1,0 +1,12 @@
+def operations(a, b):
+  yield "Addition", a + b
+  yield "Subtraction", a - b
+  yield "Multiplication", a * b
+  yield "Division", a // b
+
+x = int(input())
+y = int(input())
+
+for name, value in operations(x, y):
+    print(name + ":")
+    print(value)

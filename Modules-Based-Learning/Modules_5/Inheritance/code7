@@ -1,0 +1,21 @@
+class WiFiEnabled:
+    def wifi_status(self):
+        return "WiFi On"
+
+class BluetoothEnabled:
+    def bluetooth_status(self):
+        return "Bluetooth On"
+
+class SmartDevice(WiFiEnabled, BluetoothEnabled):
+    pass
+
+class SmartSpeaker(SmartDevice):
+    def __init__(self, model_name):
+        self.model_name = model_name
+    
+    def get_status(self):
+        return f"{self.model_name}: {self.wifi_status()}, {self.bluetooth_status()}"
+
+model_name = input().strip()
+speaker = SmartSpeaker(model_name)
+print(speaker.get_status())

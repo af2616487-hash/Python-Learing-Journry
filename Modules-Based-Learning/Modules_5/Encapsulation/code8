@@ -1,0 +1,41 @@
+class Vault:
+    def __init__(self, vault_id, balance):
+        self._balance = balance
+        self._vault_id = vault_id
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+    
+    def withdraw(self, amount):
+        if amount > 0 and self._balance >= amount:
+            self._balance -= amount
+    
+    def display_vault(self):
+        return f"Vault {self._vault_id}: Balance {self._balance}"
+
+n = int(input().strip())
+vaults = []
+
+for i in range(n):
+    line = input().strip().split()
+    vault_id = line[0]
+    balance = int(line[1])
+    vaults.append(Vault(vault_id, balance))
+
+q = int(input().strip())
+
+for _ in range(q):
+    line = input().strip().split()
+    operation = line[0]
+    vault_index = int(line[1]) - 1 
+    amount = int(line[2])
+    
+    if 0 <= vault_index < len(vaults):
+        if operation == "deposit":
+            vaults[vault_index].deposit(amount)
+        elif operation == "withdraw":
+            vaults[vault_index].withdraw(amount)
+
+for vault in vaults:
+    print(vault.display_vault())

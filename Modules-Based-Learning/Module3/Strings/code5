@@ -1,0 +1,5 @@
+a = input()
+b = input()
+s = input()
+table = str.maketrans(a, b)
+print(s.translate(table))

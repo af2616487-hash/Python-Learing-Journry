@@ -1,0 +1,95 @@
+from abc import ABC, abstractmethod
+import sys
+
+class Robot(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+    @abstractmethod
+    def move(self, direction, distance):
+        pass
+
+    @abstractmethod
+    def energy_required(self, distance):
+        pass
+
+class WheeledRobot(Robot):
+    def start(self):
+        pass
+    def stop(self):
+        pass
+    def energy_required(self, distance):
+        return distance / 10.0
+    def move(self, direction, distance):
+        print(f"Wheeled robot moving {float(distance)}m towards {direction}.")
+        print(f"Energy consumed: {self.energy_required(distance)} units")
+
+class Drone(Robot):
+    def start(self):
+        pass
+    def stop(self):
+        pass
+    def energy_required(self, distance):
+        return distance * 2.0
+    def move(self, direction, distance):
+        if distance > 100:
+            raise ValueError("Distance too far for drone")
+        print(f"Drone flying {float(distance)}m towards {direction}.")
+        print(f"Energy consumed: {self.energy_required(distance)} units")
+
+class RoboticArm(Robot):
+    def start(self):
+        pass
+    def stop(self):
+        pass
+    def energy_required(self, distance):
+        return 5.0
+    def move(self, direction, distance):
+        valid_dirs = ['up', 'down', 'left', 'right']
+        if direction not in valid_dirs:
+            raise ValueError("Invalid direction for robotic arm")
+        print(f"Robotic arm shifting {direction} by {float(distance)} units.")
+        print(f"Energy consumed: {self.energy_required(distance)} units")
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        return
+    
+    try:
+        n = int(input_data[0].strip())
+    except:
+        return
+
+    for i in range(1, n + 1):
+        line = input_data[i].strip().split()
+        if not line:
+            continue
+        
+        r_type = line[0]
+        direction = line[1]
+        distance = float(line[2])
+
+        if r_type == "Wheeled":
+            bot = WheeledRobot()
+        elif r_type == "Drone":
+            bot = Drone()
+        elif r_type == "RoboticArm":
+            bot = RoboticArm()
+        else:
+            continue
+
+        try:
+            bot.start()
+            bot.move(direction, distance)
+            bot.stop()
+        except ValueError:
+            continue
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,22 @@
+n = int(input())
+d = {}
+for _ in range(n):
+    key = input()
+    value = input()
+    d[key] = value
+
+get_key = input()
+print(d.get(get_key, "Key not found"))
+
+update_key = input()
+update_value = input()
+d.update({update_key: update_value})
+
+pop_key = input()
+d.pop(pop_key, None)
+
+d_copy = d.copy()
+print(d_copy)
+
+d.clear()
+print(d)

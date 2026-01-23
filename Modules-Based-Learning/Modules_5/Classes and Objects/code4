@@ -1,0 +1,29 @@
+class Vault:
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+
+
+    def deposit(self, amount):
+        self.balance += amount
+
+
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            print("Insufficient funds for withdrawal.")
+            
+    def display_final_balance(self):
+        print(f"Vault {self.name}: Balance {self.balance}")
+
+
+if __name__ == "__main__":
+    vault_name = input()
+    initial_balance = int(input())
+    deposit_amount = int(input())
+    withdraw_amount = int(input())
+    my_vault = Vault(vault_name, initial_balance)
+    my_vault.deposit(deposit_amount)
+    my_vault.withdraw(withdraw_amount)
+    my_vault.display_final_balance()

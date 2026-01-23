@@ -1,0 +1,6 @@
+n = input().split()
+index = int(input())
+
+result = n[index]
+
+print(result)

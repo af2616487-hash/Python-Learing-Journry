@@ -1,0 +1,27 @@
+import sys
+
+def fibonacci_generator(n):
+    a, b = 0, 1
+    count = 0
+    while count < n:
+        yield a
+        a, b = b, a + b
+        count += 1
+
+def solve():
+    try:
+        line = sys.stdin.read().strip()
+        if not line:
+            return
+        
+        n = int(line)
+        
+        gen = fibonacci_generator(n)
+        result = list(gen)
+        print(result)
+        
+    except (EOFError, ValueError):
+        pass
+
+if __name__ == "__main__":
+    solve()

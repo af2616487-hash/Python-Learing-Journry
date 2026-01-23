@@ -1,0 +1,9 @@
+def add_numbers(a, b=10):
+  print(a + b)
+
+parts = input().split()
+
+if len(parts) == 1:
+    add_numbers(int(parts[0]))
+else:
+    add_numbers(int(parts[0]), int(parts[1]))

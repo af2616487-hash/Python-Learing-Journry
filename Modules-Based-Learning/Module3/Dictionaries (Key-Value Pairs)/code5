@@ -1,0 +1,10 @@
+n = int(input())
+d = {}
+
+for _ in range(n):
+    key = input()
+    value = input()
+    d[key] = value
+
+for k, v in d.items():
+    print(f"The value for {k} is {v}")

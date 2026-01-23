@@ -1,0 +1,7 @@
+n = int(input())
+m = float(input())
+t = str(input())
+
+print(n)
+print(m)
+print(t)

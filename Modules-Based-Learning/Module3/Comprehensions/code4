@@ -1,0 +1,3 @@
+nested = eval(input())
+flat = [item for sublist in nested for item in sublist]
+print(flat)

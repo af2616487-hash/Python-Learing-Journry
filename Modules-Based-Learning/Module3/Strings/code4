@@ -1,0 +1,10 @@
+s = input()
+w = int(input())
+try:
+    fill = input()
+    if fill == "":
+        fill = "#"
+except:
+    fill = "#"
+
+print(s.center(w, fill))

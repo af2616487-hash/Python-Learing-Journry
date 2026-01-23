@@ -1,0 +1,20 @@
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def apply_discount(self, discount_percentage):
+        self.price -= self.price * (discount_percentage / 100)
+
+    def display_product(self):
+        print(f"{self.name} {self.price:.2f}")
+
+
+name = input().strip()
+price = float(input().strip())
+discount_percentage = int(input().strip())
+
+product = Product(name, price)
+
+product.apply_discount(discount_percentage)
+product.display_product()

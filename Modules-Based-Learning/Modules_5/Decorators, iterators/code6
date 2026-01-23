@@ -1,0 +1,40 @@
+import sys
+
+class EvenNumbers:
+    def __init__(self, start, end):
+        if start % 2 != 0:
+            self.current = start + 1
+        else:
+            self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current <= self.end:
+            val = self.current
+            self.current += 2
+            return val
+        else:
+            raise StopIteration
+
+def solve():
+    try:
+        data = sys.stdin.read().split()
+        if not data:
+            return
+            
+        start = int(data[0])
+        end = int(data[1])
+        
+        even_iter = EvenNumbers(start, end)
+        
+        for num in even_iter:
+            print(num)
+            
+    except (EOFError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

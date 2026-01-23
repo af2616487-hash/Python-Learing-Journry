@@ -1,0 +1,4 @@
+t = tuple(input().split())
+index = int(input())
+
+print(t[index])

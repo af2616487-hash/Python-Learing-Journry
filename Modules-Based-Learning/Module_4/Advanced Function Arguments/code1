@@ -1,0 +1,9 @@
+def greet(name, greeting="Hello"):
+  if greeting.strip() == "":
+      greeting = "Hello"
+  print(f"{greeting}, {name}!")
+
+name = input().strip()
+greeting = input()
+
+greet(name, greeting)

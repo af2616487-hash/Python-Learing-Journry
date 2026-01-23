@@ -1,0 +1,44 @@
+class Shape:
+    def __init__(self, shape_type, size):
+        self.shape_type = shape_type
+        self.size = size
+
+    def resize(self, factor):
+        self.size *= factor
+
+    def morph(self, new_shape_type):
+        self.shape_type = new_shape_type
+
+    def combine(self, other_shape):
+        new_shape_type = self.shape_type + "-" + other_shape.shape_type
+        new_size = self.size + other_shape.size
+        return Shape(new_shape_type, new_size)
+
+
+n = int(input())
+shapes = []
+
+for _ in range(n):
+    shape_type, size = input().split()
+    shapes.append(Shape(shape_type, int(size)))
+
+m1 = int(input())
+for _ in range(m1):
+    index, factor = input().split()
+    shapes[int(index) - 1].resize(int(factor))
+
+m2 = int(input())
+for _ in range(m2):
+    index, new_shape_type = input().split()
+    shapes[int(index) - 1].morph(new_shape_type)
+
+m3 = int(input())
+combined_shapes = []
+
+for _ in range(m3):
+    index1, index2 = map(int, input().split())
+    new_shape = shapes[index1 - 1].combine(shapes[index2 - 1])
+    combined_shapes.append(new_shape)
+
+for shape in shapes + combined_shapes:
+    print(f"Shape: {shape.shape_type}, Size: {shape.size}")

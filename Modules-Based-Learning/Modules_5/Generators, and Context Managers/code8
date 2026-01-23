@@ -1,0 +1,38 @@
+import sys
+
+class LogFilterEnvironment:
+    def __init__(self):
+        self.count = 0
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(self.count)
+
+def log_streamer(logs):
+    for log in logs:
+        yield log
+
+def solve():
+    try:
+        input_data = sys.stdin.read().splitlines()
+        if not input_data:
+            return
+            
+        n = int(input_data[0].strip())
+        logs = input_data[1:n+1]
+        keyword = input_data[n+1].strip().lower()
+        min_length = int(input_data[n+2].strip())
+
+        with LogFilterEnvironment() as env:
+            for log in log_streamer(logs):
+                if keyword in log.lower() and len(log) >= min_length:
+                    print(log)
+                    env.count += 1
+                    
+    except (EOFError, ValueError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,19 @@
+def merge_and_multiply(a, b, *args):
+  nums = [a, b] + list(args)
+  nums.sort(reverse=True)
+  product = 1
+  for x in nums:
+    product *= x
+  return nums, product
+
+a, b = map(int, input().split())
+line = input().strip()
+
+if line == "":
+    sorted_list, prod = merge_and_multiply(a, b)
+else:
+    args = list(map(int, line.split()))
+    sorted_list, prod = merge_and_multiply(a, b, *args)
+
+print(sorted_list)
+print(prod)

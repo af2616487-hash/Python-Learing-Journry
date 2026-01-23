@@ -1,0 +1,25 @@
+import sys
+
+def uppercase_decorator(func):
+    def wrapper():
+        result = func()
+        return result.upper()
+    return wrapper
+
+def solve():
+    try:
+        user_input = sys.stdin.read().strip()
+        if not user_input:
+            return
+
+        @uppercase_decorator
+        def get_string():
+            return user_input
+
+        print(get_string())
+        
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,34 @@
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+    @abstractmethod
+    def calculateFee(self, amount):
+        pass
+
+class CreditCard(Payment):
+    def calculateFee(self, amount):
+        return amount * 0.02
+
+class DebitCard(Payment):
+    def calculateFee(self, amount):
+        return amount * 0.01
+
+class UPI(Payment):
+    def calculateFee(self, amount):
+        return 0.0
+
+
+T = int(input())
+
+for _ in range(T):
+    method = input().strip()
+    amount = float(input())
+
+    if method == "CreditCard":
+        payment = CreditCard()
+    elif method == "DebitCard":
+        payment = DebitCard()
+    elif method == "UPI":
+        payment = UPI()
+
+    print(float(payment.calculateFee(amount)))

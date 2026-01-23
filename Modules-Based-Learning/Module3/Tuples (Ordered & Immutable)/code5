@@ -1,0 +1,8 @@
+t = tuple(map(int, input().split()))
+x = int(input())
+
+lst = list(t)
+lst.append(x)
+t = tuple(lst)
+
+print(t)

@@ -1,0 +1,3 @@
+nums = set(map(int, input().split()))
+print(min(nums))
+print(max(nums))

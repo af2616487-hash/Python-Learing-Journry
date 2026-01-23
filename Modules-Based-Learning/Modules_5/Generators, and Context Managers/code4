@@ -1,0 +1,24 @@
+import sys
+
+def hello_decorator(func):
+    def wrapper(message):
+        return "Hello, " + func(message)
+    return wrapper
+
+@hello_decorator
+def get_message(message):
+    return message
+
+def solve():
+    try:
+        input_data = sys.stdin.read().strip()
+        if not input_data:
+            return
+        
+        print(get_message(input_data))
+        
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()

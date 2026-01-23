@@ -1,0 +1,29 @@
+n = int(input())
+D = {}
+
+for _ in range(n):
+    k, v = input().split()
+    D[k] = int(v)
+
+for k, v in list(D.items()):
+    if len(k) % 2 != 0 or v <= 0:
+        D.pop(k)
+
+vowels = "aeiou"
+for k, v in list(D.items()):
+    rev = k[::-1]
+    new_key = ""
+    for ch in rev:
+        if ch in vowels:
+            new_key += ch.upper()
+        else:
+            new_key += ch
+    if v % 2 == 0:
+        new_val = bin(v)[2:]
+    else:
+        new_val = oct(v)[2:]
+    D.pop(k)
+    D[new_key] = new_val
+
+keys = sorted(D.keys())
+print(keys[0] + keys[-1])

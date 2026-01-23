@@ -1,0 +1,23 @@
+import sys
+
+def calculate_special_score():
+    try:
+        line = sys.stdin.read().split()
+        if not line:
+            return
+        a, b, c, d, e = map(int, line)
+        if e == 0 or (e - c) == 0:
+            print("INVALID")
+            return
+        if (a + b) > (c - d):
+            score = a * (b + c) - (d // e)
+            print(score)
+        else:
+            score = (a + b + d) // (e - c)
+            print(score)
+
+    except ZeroDivisionError:
+        print("INVALID")
+
+if __name__ == "__main__":
+    calculate_special_score()

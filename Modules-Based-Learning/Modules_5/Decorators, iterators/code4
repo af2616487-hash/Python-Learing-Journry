@@ -1,0 +1,26 @@
+import sys
+
+def repeat_three_times(func):
+    def wrapper():
+        result = func()
+        for _ in range(3):
+            print(result)
+    return wrapper
+
+def solve():
+    try:
+        user_input = sys.stdin.read().strip()
+        if not user_input:
+            return
+
+        @repeat_three_times
+        def get_message():
+            return user_input
+
+        get_message()
+        
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,30 @@
+class DigitalDevice:
+    def calculatePower(self, hours):
+        pass
+
+class Smartphone(DigitalDevice):
+    def calculatePower(self, hours):
+        return 15 * hours
+
+class Laptop(DigitalDevice):
+    def calculatePower(self, hours):
+        return 50 * hours
+
+class Smartwatch(DigitalDevice):
+    def calculatePower(self, hours):
+        return 5 * hours
+
+T = int(input().strip())
+
+for _ in range(T):
+    device_type = input().strip()
+    hours = int(input().strip())
+    
+    if device_type == "Smartphone":
+        device = Smartphone()
+    elif device_type == "Laptop":
+        device = Laptop()
+    elif device_type == "Smartwatch":
+        device = Smartwatch()
+    
+    print(device.calculatePower(hours))

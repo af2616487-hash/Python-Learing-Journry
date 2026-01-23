@@ -1,0 +1,5 @@
+t1 = tuple(input().split())
+t2 = tuple(input().split())
+
+result = t1 + t2
+print(result)

@@ -1,0 +1,25 @@
+class Car:
+    wheels = 4
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def display_details(self):
+        return f"{self.make} {self.model} has {Car.wheels} wheels."
+
+
+
+if __name__ == "__main__":
+  
+    make1 = input()
+    model1 = input()
+
+    make2 = input()
+    model2 = input()
+
+    car1 = Car(make1, model1)
+    car2 = Car(make2, model2)
+
+    print(car1.display_details())
+    print(car2.display_details())

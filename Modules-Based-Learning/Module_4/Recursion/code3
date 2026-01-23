@@ -1,0 +1,2 @@
+n, m = map(int, input().split())
+print(sum(range(n, m + 1)))

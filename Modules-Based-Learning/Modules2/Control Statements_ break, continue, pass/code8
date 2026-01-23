@@ -1,0 +1,33 @@
+n, k = map(int, input().split())
+commands = [input().strip() for _ in range(n)]
+
+escaped = False
+i = 0
+
+while i < n:
+    cmd = commands[i]
+
+    if cmd == "MOVE":
+        i += 1
+        continue
+
+    elif cmd == "JUMP":
+        i += k + 1
+        continue
+
+    elif cmd == "IGNORE":
+        pass
+
+    elif cmd == "BLOCK":
+        break
+
+    elif cmd == "END":
+        escaped = True
+        break
+
+    i += 1
+
+if escaped:
+    print("ESCAPED")
+else:
+    print("TRAPPED")

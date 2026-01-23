@@ -1,0 +1,14 @@
+class Book:
+    pass
+
+my_book = Book()
+
+user_input = input().split()
+
+my_book.title = user_input[0]
+my_book.author = user_input[1]
+my_book.price = float(user_input[2])
+
+print(f"Title: {my_book.title}")
+print(f"Author: {my_book.author}")
+print(f"Price: {my_book.price:.2f}")

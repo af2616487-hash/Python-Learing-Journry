@@ -1,0 +1,24 @@
+class Circle:
+    PI = 3.14
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return self.PI * self.radius * self.radius
+
+def run_circle_area_program():
+    try:
+        radius_input = float(input().strip())
+        if not (1 <= radius_input <= 1000):
+            return
+        circle = Circle(radius_input)
+        calculated_area = circle.area()
+        print(calculated_area)
+
+    except ValueError:
+        print("Error: Please enter a valid numeric float for the radius.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+if __name__ == "__main__":
+    run_circle_area_program()

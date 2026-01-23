@@ -1,0 +1,40 @@
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def get_name(self):
+        return self.name
+
+class Staff(Person):
+    def __init__(self, name, department):
+        super().__init__(name)
+        self.department = department
+    
+    def get_department(self):
+        return self.department
+
+class Teacher(Staff):
+    def __init__(self, name, department, subject):
+        super().__init__(name, department)
+        self.subject = subject
+    
+    def get_details(self):
+        return f"{self.name} teaches {self.subject} in {self.department}"
+
+class Admin(Staff):
+    def get_role(self):
+        return f"Admin - {self.name} from {self.department}"
+
+role = input().strip()
+
+if role == "Teacher":
+    name = input().strip()
+    department = input().strip()
+    subject = input().strip()
+    teacher = Teacher(name, department, subject)
+    print(teacher.get_details())
+elif role == "Admin":
+    name = input().strip()
+    department = input().strip()
+    admin = Admin(name, department)
+    print(admin.get_role())

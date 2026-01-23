@@ -1,0 +1,21 @@
+import sys
+
+def solve():
+    data = sys.stdin.read().strip()
+    if data == "True" or data == "False":
+        print("Boolean")
+    elif data.isdigit():
+        print("Integer")
+    elif data.count('.') == 1:
+        parts = data.split('.')
+        if (parts[0].isdigit() or parts[0] == "") and (parts[1].isdigit() or parts[1] == ""):
+            if data != ".":
+                print("Float")
+            else:
+                print("String")
+        else:
+            print("String")
+    else:
+        print("String")
+    if __name__ == "__main__":
+        solve()

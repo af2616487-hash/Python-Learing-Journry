@@ -1,0 +1,7 @@
+n = input().split()
+
+start, end = map(int, input().split())
+
+sublist = n[start:end]
+
+print(*(sublist))

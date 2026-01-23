@@ -1,0 +1,7 @@
+def sum_alternate_digits(n):
+  if n == 0:
+      return 0
+  return n % 10 + sum_alternate_digits(n // 100)
+
+n = int(input().strip())
+print(sum_alternate_digits(n))

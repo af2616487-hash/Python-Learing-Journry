@@ -1,0 +1,6 @@
+x = int(input())
+y = float(input())
+z = int(input())
+print(x + y + z)
+product = x * y * z
+print(f"{product:.2f}")

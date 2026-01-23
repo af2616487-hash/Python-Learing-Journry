@@ -1,0 +1,8 @@
+n = list(map(int, input().split()))
+
+m = int(input())
+newvalue= int(input())
+
+n[m] = newvalue
+
+print(*(n))

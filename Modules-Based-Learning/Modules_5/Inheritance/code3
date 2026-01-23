@@ -1,0 +1,26 @@
+class Person:
+    def show_name(self):
+        print("I am a person")
+
+class Employee(Person):
+    def show_role(self):
+        self.show_name()
+        print("I am an employee")
+
+class Manager(Employee):
+    def show_department(self):
+        self.show_role()
+        print("I manage a department")
+
+choice = input().strip().lower()
+obj = None
+
+if choice == "person":
+    obj = Person()
+    obj.show_name()
+elif choice == "employee":
+    obj = Employee()
+    obj.show_role()
+elif choice == "manager":
+    obj = Manager()
+    obj.show_department()

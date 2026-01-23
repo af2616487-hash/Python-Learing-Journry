@@ -1,0 +1,57 @@
+import sys
+
+data = sys.stdin.read().split()
+if not data:
+    sys.exit()
+
+n_orig = int(data[0])
+raw = [int(x) for x in data[1:]]
+
+cleaned = []
+if raw:
+    cleaned.append(raw[0])
+    for i in range(1, len(raw)):
+        if raw[i] != raw[i-1]:
+            cleaned.append(raw[i])
+
+extracted = []
+orig_indices = []
+for i in range(2, len(cleaned)):
+    is_prime = True
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            is_prime = False
+            break
+    if is_prime:
+        extracted.append(cleaned[i])
+        orig_indices.append(i)
+
+final_list = []
+for k in range(len(extracted)):
+    val = extracted[k]
+    if val < 0:
+        pos = orig_indices[k]
+        ln = 0
+        for l in range(pos - 1, -1, -1):
+            if cleaned[l] >= 0:
+                ln = cleaned[l]
+                break
+        rn = 0
+        for r in range(pos + 1, len(cleaned)):
+            if cleaned[r] >= 0:
+                rn = cleaned[r]
+                break
+        final_list.append((ln + rn) // 2)
+    else:
+        final_list.append(val)
+
+for m in range(len(final_list)):
+    if m % 2 == 0:
+        final_list[m] *= n_orig
+
+final_list.reverse()
+
+if len(final_list) > 1 and final_list[0] == final_list[-1]:
+    print(final_list)
+else:
+    print("Corrupted Signal")

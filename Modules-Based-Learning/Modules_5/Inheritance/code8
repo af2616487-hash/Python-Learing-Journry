@@ -1,0 +1,54 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def show_person(self):
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+
+class Employee(Person):
+    def __init__(self, name, age, employee_id):
+        Person.__init__(self, name, age)
+        self.employee_id = employee_id
+    
+    def show_employee(self):
+        print(f"Employee ID: {self.employee_id}")
+
+class Manager(Employee):
+    def __init__(self, name, age, employee_id, team_size):
+        Employee.__init__(self, name, age, employee_id)
+        self.team_size = team_size
+    
+    def show_manager(self):
+        print(f"Team Size: {self.team_size}")
+
+class Trainer(Person):
+    def __init__(self, name, age, specialization):
+        Person.__init__(self, name, age)
+        self.specialization = specialization
+    
+    def show_trainer(self):
+        print(f"Specialization: {self.specialization}")
+
+class TechLead(Manager, Trainer):
+    def __init__(self, name, age, employee_id, team_size, specialization, project):
+        Manager.__init__(self, name, age, employee_id, team_size)
+        Trainer.__init__(self, name, age, specialization)
+        self.project = project
+
+data = input().strip().split()
+name = data[0]
+age = int(data[1])
+emp_id = data[2]
+team_size = int(data[3])
+spec = data[4]
+project = data[5]
+
+techlead = TechLead(name, age, emp_id, team_size, spec, project)
+
+techlead.show_person()
+techlead.show_employee()
+techlead.show_manager()
+techlead.show_trainer()
+print(f"Project: {techlead.project}")

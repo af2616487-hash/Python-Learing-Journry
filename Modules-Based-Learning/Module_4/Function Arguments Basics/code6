@@ -1,0 +1,15 @@
+def generate_bill(name, items, discount=0):
+  total = sum(items)
+  total -= total * (discount / 100)
+  return total
+
+name = input().strip()
+items = list(map(float, input().split()))
+
+try:
+    discount = int(input().strip())
+except:
+    discount = 0
+
+final_amount = generate_bill(name, items, discount)
+print(f"{final_amount:.2f}")

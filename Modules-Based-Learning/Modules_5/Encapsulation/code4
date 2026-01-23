@@ -1,0 +1,25 @@
+class BankAccount:
+    def __init__(self):
+        self.__balance = 0  
+
+    def deposit(self, amount):
+        if isinstance(amount, int) and amount > 0:
+            self.__balance += amount
+            print(f"Balance after deposit: {self.__balance}")
+        else:
+            print("Invalid deposit amount")
+
+    def withdraw(self, amount):
+        if isinstance(amount, int) and amount > 0:
+            if self.__balance >= amount:
+                self.__balance -= amount
+                print(f"Balance after withdrawal: {self.__balance}")
+            else:
+                print("Withdrawal failed: Insufficient funds")
+        else:
+            print("Invalid withdrawal amount")
+account = BankAccount()
+deposit_amt = int(input().strip())
+withdraw_amt = int(input().strip())
+account.deposit(deposit_amt)
+account.withdraw(withdraw_amt)

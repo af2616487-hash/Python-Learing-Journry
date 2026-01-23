@@ -1,0 +1,5 @@
+def sum_all(*args):
+  return sum(args)
+
+numbers = list(map(int, input().split()))
+print(sum_all(*numbers))

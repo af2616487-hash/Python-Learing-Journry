@@ -1,0 +1,30 @@
+lass Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def calculate_area(self):
+        return self.length * self.width
+
+    def calculate_perimeter(self):
+        return 2 * (self.length + self.width)
+
+def run_rectangle_program():
+    try:
+        length_input = int(input().strip())
+        width_input = int(input().strip())
+        if not (1 <= length_input <= 10000 and 1 <= width_input <= 10000):
+            print("Error: Dimensions must be between 1 and 10000.")
+            return
+        rect = Rectangle(length_input, width_input)
+        area = rect.calculate_area()
+        perimeter = rect.calculate_perimeter()
+        print(f"Area: {area}")
+        print(f"Perimeter: {perimeter}")
+
+    except ValueError:
+        print("Error: Please enter valid numeric floats for length and width.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+if __name__ == "__main__":
+    run_rectangle_program()

@@ -1,0 +1,60 @@
+from abc import ABC, abstractmethod
+import sys
+
+class Employee(ABC):
+    @abstractmethod
+    def calculateSalary(self):
+        pass
+
+class Intern(Employee):
+    def calculateSalary(self):
+        return 5000
+
+class FullTimeEmployee(Employee):
+    def __init__(self, basic_pay):
+        self.basic_pay = basic_pay
+    def calculateSalary(self):
+        return self.basic_pay + (0.3 * self.basic_pay) + (0.2 * self.basic_pay)
+
+class Freelancer(Employee):
+    def __init__(self, rate, hours):
+        self.rate = rate
+        self.hours = hours
+    def calculateSalary(self):
+        return self.rate * self.hours
+
+def solve():
+    data = sys.stdin.read().split()
+    if not data:
+        return
+    
+    t = int(data[0])
+    idx = 1
+    
+    for _ in range(t):
+        emp_type = data[idx]
+        idx += 1
+        
+        if emp_type == "Intern":
+            emp = Intern()
+            print(emp.calculateSalary())
+            
+        elif emp_type == "FullTimeEmployee":
+            pay = float(data[idx])
+            idx += 1
+            emp = FullTimeEmployee(pay)
+            res = emp.calculateSalary()
+            if res == int(res):
+                print(f"{res:.1f}")
+            else:
+                print(res)
+                
+        elif emp_type == "Freelancer":
+            rate = int(data[idx])
+            hours = int(data[idx+1])
+            idx += 2
+            emp = Freelancer(rate, hours)
+            print(emp.calculateSalary())
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,16 @@
+class Student:
+    def __init__(self):
+        self.__grade = None  
+
+    def set_grade(self, grade):
+        if isinstance(grade, int) and 0 <= grade <= 100:
+            self.__grade = grade
+            print(f"Grade set to: {grade}")
+        else:
+            print("Grade must be between 0 and 100.")
+
+    def get_grade(self):
+        return self.__grade
+grade_input = int(input().strip())
+student = Student()
+student.set_grade(grade_input)

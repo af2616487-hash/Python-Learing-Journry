@@ -1,0 +1,7 @@
+def add_numbers(a, b):
+  return a + b
+
+x = int(input())
+y = int(input())
+
+print(add_numbers(x, y))

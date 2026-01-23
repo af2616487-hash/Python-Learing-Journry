@@ -1,0 +1,9 @@
+def calculate(a, b):
+  return a + b, a - b
+
+x = int(input())
+y = int(input())
+
+sum_result, diff_result = calculate(x, y)
+print(sum_result)
+print(diff_result)

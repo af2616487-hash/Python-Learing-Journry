@@ -1,0 +1,9 @@
+temp = list(map(int, input().split()))
+
+anomalies = []
+
+for i in range(1, len(temp)):
+  if temp[i - 1] - temp[i] >= 5:
+    anomalies.append(temp[i])
+
+print(anomalies)

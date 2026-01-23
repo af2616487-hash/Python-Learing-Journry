@@ -1,0 +1,33 @@
+class Display:
+    def show_display(self):
+        print("Display: Touchscreen")
+
+class Battery:
+    def show_battery(self):
+        print("Battery: 4000mAh")
+
+class Smartphone(Display, Battery):
+    def show_device(self):
+        self.show_display()
+        self.show_battery()
+        print("Device: Smartphone")
+
+def main():
+    phone = Smartphone()
+    
+    try:
+        user_input = input().strip().lower() 
+    except EOFError:
+        return
+
+    if user_input == "display":
+        phone.show_display()
+    elif user_input == "battery":
+        phone.show_battery()
+    elif user_input == "smartphone":
+        phone.show_device()
+    else:
+        print("Invalid input")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,22 @@
+class NegativeValueError(Exception):
+    pass
+
+def check_value(value):
+    if value < 0:
+        raise NegativeValueError("Negative values are not allowed.")
+    else:
+        print("The value is positive.")
+
+def main():
+    try:
+        user_input = input()
+        num = float(user_input)
+        
+        check_value(num)
+    except NegativeValueError as e:
+        print(e)
+    except ValueError:
+        print("Error: Please enter a valid numeric value.")
+
+if __name__ == "__main__":
+    main()

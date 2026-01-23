@@ -1,0 +1,29 @@
+import sys
+from contextlib import contextmanager
+
+@contextmanager
+def input_reader():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        yield []
+    else:
+        yield input_data
+
+def solve():
+    try:
+        raw_input = sys.stdin.read().splitlines()
+        if not raw_input:
+            return
+            
+        n = int(raw_input[0].strip())
+        lines = raw_input[1:n+1]
+
+        with input_reader() as reader:
+            for line in lines:
+                print(line)
+                
+    except (EOFError, ValueError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

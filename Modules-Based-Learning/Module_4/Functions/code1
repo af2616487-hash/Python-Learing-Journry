@@ -1,0 +1,7 @@
+def demo(*args):
+  print("Packed Arguments:", args)
+  for x in args:
+    print("Unpacked:", x)
+
+nums = list(map(int, input().split()))
+demo(*nums)

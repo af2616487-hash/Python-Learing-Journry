@@ -1,0 +1,19 @@
+class ValueA:
+    def __init__(self, val):
+        self.a = val
+
+class ValueB:
+    def __init__(self, val):
+        self.b = val
+
+class Hybrid(ValueA, ValueB):
+    def __init__(self, a, b):
+        ValueA.__init__(self, a)
+        ValueB.__init__(self, b)
+    
+    def calculate_sum(self):
+        return self.a + self.b
+
+a, b = map(int, input().split())
+hybrid = Hybrid(a, b)
+print(hybrid.calculate_sum())

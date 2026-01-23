@@ -1,0 +1,36 @@
+class Appliance:
+    def calculateBill(self, hours):
+        pass
+
+class Fan(Appliance):
+    def calculateBill(self, hours):
+        units = (70 * hours * 30) / 1000
+        bill = units * 6
+        return "{:.2f}".format(bill)
+
+class AirConditioner(Appliance):
+    def calculateBill(self, hours):
+        units = (1500 * hours * 30) / 1000
+        bill = units * 6
+        return "{:.2f}".format(bill)
+
+class Refrigerator(Appliance):
+    def calculateBill(self, hours):
+        units = (200 * hours * 30) / 1000
+        bill = units * 6
+        return "{:.2f}".format(bill)
+
+T = int(input().strip())
+
+for _ in range(T):
+    appliance_type = input().strip()
+    H = int(input().strip())
+    
+    if appliance_type == "Fan":
+        appliance = Fan()
+    elif appliance_type == "AirConditioner":
+        appliance = AirConditioner()
+    elif appliance_type == "Refrigerator":
+        appliance = Refrigerator()
+    
+    print(appliance.calculateBill(H))

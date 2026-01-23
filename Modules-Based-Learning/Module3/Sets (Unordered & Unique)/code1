@@ -1,0 +1,3 @@
+items = input().split()
+unique_items = list(dict.fromkeys(items))
+print("{" + ", ".join(unique_items) + "}")

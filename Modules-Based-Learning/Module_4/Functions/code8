@@ -1,0 +1,74 @@
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    try:
+        n = int(input_data[ptr])
+        ptr += 1
+    except:
+        return
+        
+    students = []
+    for _ in range(n):
+        name = input_data[ptr]
+        age = int(input_data[ptr+1])
+        score = int(input_data[ptr+2])
+        city = input_data[ptr+3]
+        students.append({'name': name, 'age': age, 'score': score, 'city': city})
+        ptr += 4
+        
+    try:
+        m = int(input_data[ptr])
+        ptr += 1
+    except:
+        m = 0
+        
+    filter_names = []
+    for _ in range(m):
+        filter_names.append(input_data[ptr].lower().strip())
+        ptr += 1
+        
+    params = input_data[ptr:]
+    p_ptr = 0
+    
+    conditions = []
+    for f in filter_names:
+        if f == "age_above":
+            v = int(params[p_ptr]); p_ptr += 1
+            conditions.append(lambda s, v=v: s['age'] > v)
+        elif f == "age_below":
+            v = int(params[p_ptr]); p_ptr += 1
+            conditions.append(lambda s, v=v: s['age'] < v)
+        elif f == "score_above":
+            v = int(params[p_ptr]); p_ptr += 1
+            conditions.append(lambda s, v=v: s['score'] > v)
+        elif f == "score_below":
+            v = int(params[p_ptr]); p_ptr += 1
+            conditions.append(lambda s, v=v: s['score'] < v)
+        elif f == "score_between":
+            v1 = int(params[p_ptr]); v2 = int(params[p_ptr+1]); p_ptr += 2
+            low, high = min(v1, v2), max(v1, v2)
+            conditions.append(lambda s, l=low, h=high: l <= s['score'] <= h)
+        elif f == "city_is":
+            t = params[p_ptr].lower(); p_ptr += 1
+            conditions.append(lambda s, t=t: s['city'].lower() == t)
+        elif f == "name_starts_with":
+            p = params[p_ptr].lower(); p_ptr += 1
+            conditions.append(lambda s, p=p: s['name'].lower().startswith(p))
+        elif f == "age_is":
+            v = int(params[p_ptr]); p_ptr += 1
+            conditions.append(lambda s, v=v: s['age'] == v)
+    def student_matches(student):
+        return all(cond(student) for cond in conditions)
+
+    result_students = [s for s in students if student_matches(s)]
+    names = sorted([s['name'] for s in result_students])
+    if names:
+        sys.stdout.write("\n".join(names) + "\n")
+
+if __name__ == "__main__":
+    solve()

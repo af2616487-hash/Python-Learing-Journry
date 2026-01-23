@@ -1,0 +1,45 @@
+import sys
+
+def dynamic_processor(operation, *args):
+    if not args:
+        if operation == 'add': return 0
+        if operation == 'multiply': return 0
+        return None
+
+    if operation == 'add':
+        return sum(args)
+    
+    elif operation == 'multiply':
+        product = 1
+        for num in args:
+            product *= num
+        return product
+    
+    elif operation == 'find_max':
+        return max(args)
+    
+    elif operation == 'find_min':
+        return min(args)
+
+def main():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        n = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(n):
+        parts = sys.stdin.readline().split()
+        if not parts:
+            continue
+        operation = parts[0]
+        params = list(map(int, parts[1:]))
+        result = dynamic_processor(operation, *params)
+        
+        if result is not None:
+            print(result)
+
+if __name__ == "__main__":
+    main()

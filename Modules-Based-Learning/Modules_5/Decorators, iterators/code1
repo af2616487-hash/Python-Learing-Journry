@@ -1,0 +1,29 @@
+import sys
+
+def check_even_decorator(func):
+    def wrapper(numbers):
+        if all(n % 2 == 0 for n in numbers):
+            return "All even"
+        else:
+            return "Not all even"
+    return wrapper
+
+@check_even_decorator
+def process_numbers(numbers):
+    pass
+
+def main():
+    try:
+        line = sys.stdin.read().strip()
+        if not line:
+            return
+        
+        nums = list(map(int, line.split()))
+        result = process_numbers(nums)
+        print(result)
+        
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    main()

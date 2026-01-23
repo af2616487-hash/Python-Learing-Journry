@@ -1,0 +1,18 @@
+n = int(input())
+
+mylist = []
+
+for i in range(n):
+  item = input()
+  mylist.append(item)
+  
+removeelement = input()
+
+if removeelement in mylist:
+  mylist.remove(removeelement)
+
+
+mylist.sort()
+mylist.reverse()
+
+print(mylist)

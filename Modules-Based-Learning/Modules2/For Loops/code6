@@ -1,0 +1,6 @@
+n = int(input())
+numbers = list(map(int, input().split()))
+reversed_number = []
+for i in range(n - 1, -1, -1):
+    reversed_number.append(str(numbers[i]))
+print(" ".join(reversed_number))

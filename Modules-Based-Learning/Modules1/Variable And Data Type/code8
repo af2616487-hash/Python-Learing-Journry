@@ -1,0 +1,22 @@
+folder_name = input()
+subfolder_name = input()
+file_base_name = input()
+drive_number = int(input())
+file_extension = input()
+separator_type = input()
+full_file_name = file_base_name + file_extension
+forward_sep = "/"
+backward_sep = "\\\\"
+drive3 = 'D'
+drive4 = 'F'
+drive5 = 'H'
+drive6 = 'J'
+drive7 = 'L'
+drive8 = 'N'
+drive9 = 'P'
+drive10 = 'R'
+drive_letter = (drive_number == 3) * drive3 + (drive_number == 4) * drive4 + (drive_number == 5) * drive5 + (drive_number == 6) * drive6 + (drive_number == 7) * drive7 + (drive_number == 8) * drive8 + (drive_number == 9) * drive9 + (drive_number == 10) * drive10
+linux_path = forward_sep + folder_name + forward_sep + subfolder_name + forward_sep + full_file_name
+windows_path = drive_letter + ": \\\\" + folder_name + "\\\\" + subfolder_name + "\\\\" + full_file_name
+final_path = (separator_type == "forward") * linux_path + (separator_type == "backward") * windows_path
+print(final_path)

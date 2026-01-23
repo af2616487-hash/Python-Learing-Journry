@@ -1,0 +1,22 @@
+n = int(input())
+nums = list(map(int, input().split()))
+
+def digit_sum_even(x):
+    return sum(map(int, str(abs(x)))) % 2 == 0
+
+result = []
+mapping = {}
+
+for x in nums:
+    if x % 3 == 0 or digit_sum_even(x):
+        if x % 2 == 0:
+            t = x * x
+        else:
+            t = x * x * x
+        mapping[x] = t
+
+for v in mapping.values():
+    if v >= 0 and int(v ** 0.5) ** 2 == v:
+        result.append(v)
+
+print(*result)

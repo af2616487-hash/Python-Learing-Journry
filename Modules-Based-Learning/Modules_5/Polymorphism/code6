@@ -1,0 +1,26 @@
+class Rectangle:
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
+    
+    def area(self):
+        return self.length * self.breadth
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        pi = 3.1416
+        return pi * self.radius * self.radius
+
+shape = input().strip().lower()
+
+if shape == "rectangle":
+    length, breadth = map(int, input().strip().split())
+    rect = Rectangle(length, breadth)
+    print("{:.2f}".format(rect.area()))
+elif shape == "circle":
+    radius = int(input().strip())
+    circle = Circle(radius)
+    print("{:.2f}".format(circle.area()))

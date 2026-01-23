@@ -1,0 +1,8 @@
+a = input().strip()
+b = input().strip()
+user = (a == "True")
+pass_ = (b == "True")
+both_correct = user and pass_
+any_one_incorrect = (not user) or (not pass_)
+print(both_correct)
+print(any_one_incorrect)

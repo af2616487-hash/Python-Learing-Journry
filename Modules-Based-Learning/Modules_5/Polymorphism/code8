@@ -1,0 +1,70 @@
+from abc import ABC, abstractmethod
+
+class DigitProcessor(ABC):
+    def __init__(self, digit_string):
+        self.digit_string = digit_string
+
+    @abstractmethod
+    def process(self, extra_flag):
+        pass
+
+
+class SensorProcessor(DigitProcessor):
+    def process(self, extra_flag):
+        if extra_flag == "count_even":
+            even_count = sum(1 for d in self.digit_string if int(d) % 2 == 0)
+            print(f"[SUCCESS] Sensor processed {self.digit_string} with {even_count} even digits.")
+        else:
+            print("Error: Only Sensor can count even digits.")
+
+
+class StreamProcessor(DigitProcessor):
+    def process(self, extra_flag):
+        if extra_flag != "None":
+            print("Error: Only Sensor can count even digits.")
+            return
+
+        digit_sum = sum(map(int, self.digit_string))
+        if digit_sum >= 100:
+            print("Error: Digit sum exceeds limit.")
+        else:
+            print(f"[SUCCESS] Stream processed {self.digit_string} with digit sum {digit_sum}.")
+
+
+class WirelessProcessor(DigitProcessor):
+    def process(self, extra_flag):
+        if extra_flag != "None":
+            print("Error: Only Sensor can count even digits.")
+            return
+
+        digit_sum = sum(map(int, self.digit_string))
+
+        for attempt in range(1, 4):
+            print(f"Retrying Wireless processing for {self.digit_string}, attempt {attempt}...")
+
+        if digit_sum % 2 != 0:
+            print(f"Error: Wireless dispatch failed for {self.digit_string}")
+
+
+priority_map = {"High": 1, "Medium": 2, "Low": 3}
+
+n = int(input().strip())
+entries = []
+
+for _ in range(n):
+    source, digit_string, priority, extra_flag = input().strip().split()
+    entries.append((priority_map[priority], source, digit_string, extra_flag))
+
+entries.sort(key=lambda x: x[0])
+
+for _, source, digit_string, extra_flag in entries:
+    if source == "Sensor":
+        processor = SensorProcessor(digit_string)
+    elif source == "Stream":
+        processor = StreamProcessor(digit_string)
+    elif source == "Wireless":
+        processor = WirelessProcessor(digit_string)
+    else:
+        continue
+
+    processor.process(extra_flag)

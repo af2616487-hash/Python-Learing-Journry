@@ -1,0 +1,3 @@
+n = int(input())
+square = lambda x: x * x
+print(square(n))

@@ -1,0 +1,4 @@
+x =int(input())
+X =int(input())
+print("Value of x:",x)
+print("Value of x:",X)

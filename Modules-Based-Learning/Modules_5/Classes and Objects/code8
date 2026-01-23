@@ -1,0 +1,71 @@
+import sys
+
+class Student:
+    def __init__(self, name, student_id):
+        self.name = name
+        self.student_id = student_id
+        self.courses = []
+
+    def enroll(self, course):
+        self.courses.append(course.course_name)
+        course.enrolled_students.append(self.student_id)
+
+class Course:
+    def __init__(self, course_name, course_code):
+        self.course_name = course_name
+        self.course_code = course_code
+        self.enrolled_students = []
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        return
+    
+    line_ptr = 0
+    
+    s_count = int(input_data[line_ptr].strip())
+    line_ptr += 1
+    students_list = []
+    students_dict = {}
+    for _ in range(s_count):
+        parts = input_data[line_ptr].strip().rsplit(' ', 1)
+        name = parts[0]
+        sid = int(parts[1])
+        line_ptr += 1
+        new_student = Student(name, sid)
+        students_list.append(new_student)
+        students_dict[sid] = new_student
+
+    c_count = int(input_data[line_ptr].strip())
+    line_ptr += 1
+    courses_list = []
+    courses_dict = {}
+    for _ in range(c_count):
+        parts = input_data[line_ptr].strip().rsplit(' ', 1)
+        cname = parts[0]
+        ccode = parts[1]
+        line_ptr += 1
+        new_course = Course(cname, ccode)
+        courses_list.append(new_course)
+        courses_dict[ccode] = new_course
+
+    e_count = int(input_data[line_ptr].strip())
+    line_ptr += 1
+    for _ in range(e_count):
+        enroll_parts = input_data[line_ptr].strip().split()
+        if len(enroll_parts) < 2:
+            continue
+        sid = int(enroll_parts[0])
+        ccode = enroll_parts[1]
+        line_ptr += 1
+        if sid in students_dict and ccode in courses_dict:
+            students_dict[sid].enroll(courses_dict[ccode])
+
+    for s in students_list:
+        print(f"Student: {s.name}, ID: {s.student_id}, Courses: {s.courses}")
+
+    for c in courses_list:
+        print(f"Course: {c.course_name}, Code: {c.course_code}, Enrolled Students: {c.enrolled_students}")
+
+if __name__ == "__main__":
+    solve()

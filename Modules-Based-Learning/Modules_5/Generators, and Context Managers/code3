@@ -1,0 +1,22 @@
+import sys
+
+def generate_evens(n):
+    for i in range(0, n, 2):
+        yield i
+
+def solve():
+    try:
+        line = sys.stdin.read().strip()
+        if not line:
+            return
+        
+        n = int(line)
+        evens = generate_evens(n)
+        
+        print(*(evens))
+        
+    except (EOFError, ValueError):
+        pass
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,46 @@
+n = int(input())
+matrix = []
+
+i = 0
+while i < n:
+    matrix.append(list(map(int, input().split())))
+    i += 1
+
+top = 0
+bottom = n - 1
+left = 0
+right = n - 1
+
+result = []
+
+while top <= bottom and left <= right:
+    j = left
+    while j <= right:
+        result.append(matrix[top][j])
+        j += 1
+    top += 1
+
+    i = top
+    while i <= bottom:
+        result.append(matrix[i][right])
+        i += 1
+    right -= 1
+
+    if top <= bottom:
+        j = right
+        while j >= left:
+            result.append(matrix[bottom][j])
+            j -= 1
+        bottom -= 1
+
+    if left <= right:
+        i = bottom
+        while i >= top:
+            result.append(matrix[i][left])
+            i -= 1
+        left += 1
+
+k = 0
+while k < len(result):
+    print(result[k], end=" ")
+    k += 1

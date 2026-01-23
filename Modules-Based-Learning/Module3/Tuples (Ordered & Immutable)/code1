@@ -1,0 +1,3 @@
+values = input().split()
+result = tuple(values)
+print(result)

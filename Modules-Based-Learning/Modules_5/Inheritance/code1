@@ -1,0 +1,11 @@
+lass Person:
+    def __init__(self, name):
+        self.name = name
+
+class Student(Person):
+    def introduce(self):
+        print(f"{self.name} I am a student")
+
+name = input().strip()
+student = Student(name)
+student.introduce()

@@ -1,0 +1,3 @@
+d = eval(input())
+inverted = {v: k for k, v in d.items()}
+print(inverted)

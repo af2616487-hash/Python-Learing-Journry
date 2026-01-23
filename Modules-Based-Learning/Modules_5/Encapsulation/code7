@@ -1,0 +1,41 @@
+import sys
+
+class Student:
+    def __init__(self, name):
+        self.__name = name
+        self.__marks = 0
+
+    def set_marks(self, marks):
+        if 0 <= marks <= 100:
+            self.__marks = marks
+            return True
+        else:
+            return False
+
+    def get_marks(self):
+        return self.__marks
+
+    def display_info(self):
+        print(self.__name)
+        print(self.__marks)
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        return
+
+    name = input_data[0].strip()
+    
+    try:
+        marks = int(input_data[1].strip())
+    except (ValueError, IndexError):
+        return
+
+    student = Student(name)
+    if student.set_marks(marks):
+        student.display_info()
+    else:
+        print("Invalid Marks")
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,36 @@
+import sys
+
+class CustomRange:
+    def __init__(self, start, end):
+        self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current <= self.end:
+            val = self.current
+            self.current += 1
+            return val
+        else:
+            raise StopIteration
+
+def solve():
+    try:
+        data = sys.stdin.read().split()
+        if not data:
+            return
+            
+        start = int(data[0])
+        end = int(data[1])
+        
+        my_iter = CustomRange(start, end)
+        result = list(my_iter)
+        print(result)
+            
+    except (EOFError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

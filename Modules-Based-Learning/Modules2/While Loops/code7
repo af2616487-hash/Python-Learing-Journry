@@ -1,0 +1,10 @@
+n = int(input())
+if n < 0:
+    print("Error: Sum of digits is not defined for negative numbers.")
+else:
+    digitsum = 0
+    while n > 0:
+        digit = n % 10
+        digitsum += digit
+        n = n // 10
+    print(digitsum)

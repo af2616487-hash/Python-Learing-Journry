@@ -1,0 +1,25 @@
+class BankAccount:
+    def __init__(self, initial_balance):
+        self.__balance = initial_balance  # private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+
+    def get_balance(self):
+        return self.__balance
+
+
+initial_balance = float(input())
+deposit_amount = float(input())
+withdrawal_amount = float(input())
+
+account = BankAccount(initial_balance)
+
+account.deposit(deposit_amount)
+account.withdraw(withdrawal_amount)
+
+print(account.get_balance())

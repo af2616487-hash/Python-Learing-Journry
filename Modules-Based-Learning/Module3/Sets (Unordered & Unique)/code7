@@ -1,0 +1,31 @@
+import sys
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    
+    lines = [line.strip() for line in input_data if line.strip()]
+    
+    if not lines:
+        return
+
+    emails = lines[0].split()
+    
+    blocked_domains = set()
+    for i in range(1, len(lines)):
+        parts = lines[i].split()
+        for p in parts:
+            blocked_domains.add(p)
+
+    filtered_emails = set()
+
+    for email in emails:
+        if '@' in email:
+            parts = email.rsplit('@', 1)
+            domain = parts[1]
+            if domain not in blocked_domains:
+                filtered_emails.add(email)
+
+    print(filtered_emails)
+
+if __name__ == "__main__":
+    solve()

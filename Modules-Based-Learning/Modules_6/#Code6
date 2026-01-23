@@ -1,0 +1,14 @@
+def add_integers():
+    try:
+        val1 = input()
+        val2 = input()
+        num1 = int(val1)
+        num2 = int(val2)
+        
+        result = num1 + num2
+        print(result)
+    except ValueError:
+        print("Invalid input. Please enter valid integers.")
+
+if __name__ == "__main__":
+    add_integers()

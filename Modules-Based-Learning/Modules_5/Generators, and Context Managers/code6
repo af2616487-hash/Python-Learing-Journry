@@ -1,0 +1,36 @@
+import sys
+
+class RangeGenerator:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        self.total_sum = 0
+
+    def __enter__(self):
+        def generator():
+            for i in range(self.start, self.end):
+                self.total_sum += i
+                yield i
+        return generator()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(self.total_sum)
+
+def solve():
+    try:
+        data = sys.stdin.read().split()
+        if not data:
+            return
+            
+        start = int(data[0])
+        end = int(data[1])
+        
+        with RangeGenerator(start, end) as numbers:
+            for num in numbers:
+                pass
+                
+    except (EOFError, ValueError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

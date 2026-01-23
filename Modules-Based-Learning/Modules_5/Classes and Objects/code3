@@ -1,0 +1,31 @@
+class Student:
+    """
+    Represents a student with a name and their marks.
+    """
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+
+if __name__ == "__main__":
+    user_input = input("")
+
+    try:
+        last_space_index = user_input.rfind(' ')
+        if last_space_index == -1:
+            raise ValueError("Invalid input format. Name and marks must be separated by a space.")
+            
+        name = user_input[:last_space_index]
+        marks_str = user_input[last_space_index + 1:]
+        
+        marks = int(marks_str)
+        student1 = Student(name, marks)
+        print(student1.name)
+        if student1.marks >= 40:
+            print("Pass")
+        else:
+            print("Fail")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+        print("Please ensure marks are a valid integer and the format is correct.")

@@ -1,0 +1,59 @@
+import sys
+
+class StringIterator:
+    def __init__(self, strings):
+        self.strings = strings
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.strings):
+            res = self.strings[self.index]
+            self.index += 1
+            return res
+        raise StopIteration
+
+def capitalize_words(func):
+    def wrapper(s):
+        return func(s.title())
+    return wrapper
+
+def replace_vowels(func):
+    def wrapper(s):
+        vowels = "aeiouAEIOU"
+        transformed = "".join(['*' if char in vowels else char for char in s])
+        return func(transformed)
+    return wrapper
+
+def append_length(func):
+    def wrapper(s):
+        original_len = len(s)
+        transformed = func(s)
+        return f"{transformed} ({original_len})"
+    return wrapper
+
+def final_output(s):
+    return s
+
+@append_length
+@replace_vowels
+@capitalize_words
+def transform_string(s):
+    return final_output(s)
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        return
+    
+    n = int(input_data[0].strip())
+    strings = input_data[1:n+1]
+    
+    it = StringIterator(strings)
+    for s in it:
+        print(transform_string(s))
+
+if __name__ == "__main__":
+    solve()

@@ -1,0 +1,3 @@
+expre = input()
+result = eval(expre)
+print(float(result))

@@ -1,0 +1,62 @@
+n = int(input().strip())
+
+params = []
+defaults = {}
+
+for _ in range(n):
+    line = input().strip()
+    if '=' in line:
+        name, default = line.split('=')
+        params.append(name)
+        defaults[name] = default
+    else:
+        params.append(line)
+
+m = int(input().strip())
+
+for _ in range(m):
+    call = input().strip()
+    if call == "":
+        args = []
+    else:
+        args = call.split(',')
+
+    values = {}
+    pos_index = 0
+    error = False
+
+    for arg in args:
+        if '=' in arg:
+            key, val = arg.split('=')
+            if key not in params or key in values:
+                error = True
+                break
+            values[key] = val
+        else:
+            if pos_index >= len(params):
+                error = True
+                break
+            if params[pos_index] in values:
+                error = True
+                break
+            values[params[pos_index]] = arg
+            pos_index += 1
+
+    if error:
+        print("ERROR")
+        continue
+
+    result = []
+    for p in params:
+        if p in values:
+            result.append(values[p])
+        elif p in defaults:
+            result.append(defaults[p])
+        else:
+            error = True
+            break
+
+    if error:
+        print("ERROR")
+    else:
+        print(result)

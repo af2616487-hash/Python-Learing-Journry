@@ -1,0 +1,28 @@
+import sys
+
+def square_decorator(func):
+    def wrapper(n):
+        result = func(n)
+        return result * result
+    return wrapper
+
+@square_decorator
+def get_number(n):
+    return n
+
+def solve():
+    try:
+        data = sys.stdin.read().strip()
+        if not data:
+            return
+        
+        n = int(data)
+        print(get_number(n))
+        
+    except EOFError:
+        pass
+    except ValueError:
+        pass
+
+if __name__ == "__main__":
+    solve()

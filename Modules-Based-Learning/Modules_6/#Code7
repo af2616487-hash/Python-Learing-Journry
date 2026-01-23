@@ -1,0 +1,18 @@
+class NegativeNumberError(Exception):
+    pass
+
+def check_number():
+    try:
+        user_input = input()
+        number = float(user_input)
+        if number < 0:
+            raise NegativeNumberError("Negative numbers are not allowed.")
+        else:
+            print("Valid number.")
+    except ValueError:
+        print("Error: Please enter a valid numeric value.")
+    except NegativeNumberError as e:
+        print(e)
+
+if __name__ == "__main__":
+    check_number()

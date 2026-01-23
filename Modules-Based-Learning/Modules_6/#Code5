@@ -1,0 +1,35 @@
+class AgeEligibilityError(Exception):
+    pass
+
+def check_voting_eligibility():
+    try:
+        age_input = input()
+        age = int(age_input)
+        if age < 18:
+            raise AgeEligibilityError("You must be at least 18 years old to vote.")
+        else:
+            print("You are eligible to vote.")
+    except ValueError:
+        print("Error: Invalid input. Please enter a whole number.")
+    except AgeEligibilityError as e:
+        print(e)
+
+if __name__ == "__main__":
+    check_voting_eligibility()
+
+
+#Code6
+def add_integers():
+    try:
+        val1 = input()
+        val2 = input()
+        num1 = int(val1)
+        num2 = int(val2)
+        
+        result = num1 + num2
+        print(result)
+    except ValueError:
+        print("Invalid input. Please enter valid integers.")
+
+if __name__ == "__main__":
+    add_integers()

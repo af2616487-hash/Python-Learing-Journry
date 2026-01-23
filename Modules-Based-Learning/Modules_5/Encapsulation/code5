@@ -1,0 +1,28 @@
+class Student:
+    def __init__(self):
+        self.__name = ""
+        self.__age = 0
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_age(self, age):
+        if 5 <= age <= 100:
+            self.__age = age
+        else:
+            print(f"Invalid age. Age must be between 5 and 100.")
+
+    def get_name(self):
+        return self.__name
+
+    def get_age(self):
+        return self.__age
+
+student = Student()
+name = input().strip()
+age = int(input().strip())
+
+student.set_name(name)
+student.set_age(age)
+
+print(f"Student Name: {student.get_name()}, Age: {student.get_age()}")

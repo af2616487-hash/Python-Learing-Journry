@@ -1,0 +1,11 @@
+def filter_and_sum(limit, *numbers):
+  total = 0
+  for x in numbers:
+    if x < limit and x % 2 == 0:
+          total += x
+  return total
+
+limit = int(input().strip())
+numbers = list(map(int, input().split()))
+
+print(filter_and_sum(limit, *numbers))

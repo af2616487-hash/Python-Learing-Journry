@@ -1,0 +1,36 @@
+class Student:
+    def __init__(self, name, mark1, mark2, mark3):
+        self.name = name
+        self.mark1 = mark1
+        self.mark2 = mark2
+        self.mark3 = mark3
+
+    def calculate_average(self):
+        average = (self.mark1 + self.mark2 + self.mark3) // 3
+        return average
+
+    def display_result(self):
+        average = self.calculate_average()
+        status = "Pass" if average >= 40 else "Fail"
+        print(f"Student {self.name}: Average {average} - {status}")
+
+
+def get_multiline_user_input_and_run():
+    try:
+        name = input()
+        m1 = int(input())
+        m2 = int(input())
+        m3 = int(input())
+
+        user_student = Student(name, m1, m2, m3)
+
+
+        user_student.display_result()
+
+    except ValueError:
+        print("Error: Invalid input for marks. Please enter valid integers.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    get_multiline_user_input_and_run()

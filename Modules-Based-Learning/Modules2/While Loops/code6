@@ -1,0 +1,10 @@
+n = int(input())
+if n < 1:
+    print("Error: Factorial is not defined for negative numbers")
+else:
+    Factorial = 1
+    i = n
+    while i >= 1:
+        Factorial = Factorial * i
+        i = i - 1
+    print(Factorial)

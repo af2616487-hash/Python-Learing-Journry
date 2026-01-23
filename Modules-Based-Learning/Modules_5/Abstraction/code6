@@ -1,0 +1,46 @@
+from abc import ABC, abstractmethod
+
+class Appliance(ABC):
+    @abstractmethod
+    def turn_on(self):
+        pass
+
+    @abstractmethod
+    def turn_off(self):
+        pass
+
+
+class WashingMachine(Appliance):
+    def turn_on(self):
+        print("Washing Machine is now ON")
+
+    def turn_off(self):
+        print("Washing Machine is now OFF")
+
+
+class Refrigerator(Appliance):
+    def turn_on(self):
+        print("Refrigerator is now ON")
+
+    def turn_off(self):
+        print("Refrigerator is now OFF")
+
+
+try:
+    n = int(input().strip())
+except:
+    n = 0
+
+for _ in range(n):
+    name = input().strip()
+
+    appliance = None
+
+    if name == "WashingMachine":
+        appliance = WashingMachine()
+    elif name == "Refrigerator":
+        appliance = Refrigerator()
+
+    if appliance:
+        appliance.turn_on()
+        appliance.turn_off()

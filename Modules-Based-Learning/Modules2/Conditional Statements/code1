@@ -1,0 +1,13 @@
+nums = list(map(int, input().split()))
+target = int(input())
+
+found = False
+
+for i in range(len(nums)):
+    if nums[i] == target:
+        print(f"Number found at index {i}")
+        found = True
+        break
+
+if not found:
+    print("Number not found")

@@ -1,0 +1,10 @@
+words = set(input().split())
+vowels = set("aeiouAEIOU")
+
+count = 0
+for word in words:
+    for ch in word:
+        if ch in vowels:
+            count += 1
+
+print(count)

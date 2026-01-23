@@ -1,0 +1,18 @@
+def check_positive(number):
+    if number <= 0:
+        raise ValueError("The number must be positive.")
+    else:
+        print("The number is positive.")
+
+def main():
+    try:
+        user_input = input()
+        val = float(user_input)
+        
+        check_positive(val)
+
+    except ValueError as e:
+        print(e)
+
+if __name__ == "__main__":
+    main()

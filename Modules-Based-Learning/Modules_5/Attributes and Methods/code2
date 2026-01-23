@@ -1,0 +1,17 @@
+class MathOperations:
+    @staticmethod
+    def square(number):
+        return number * number
+
+def run_square_program():
+    try:
+        input_number = int(input().strip())
+        result = MathOperations.square(input_number)
+        print(result)
+
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+if __name__ == "__main__":
+    run_square_program()

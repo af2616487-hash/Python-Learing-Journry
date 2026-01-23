@@ -1,0 +1,30 @@
+class BankAccount:
+    def __init__(self, initial_balance):
+        self.__balance = initial_balance 
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Deposit Successful: {self.__balance}")
+        else:
+            print("Deposit Failed")
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            print(f"Withdrawal Successful: {self.__balance}")
+        else:
+            print("Withdrawal Failed")
+
+    def display_balance(self):
+        return self.__balance
+
+
+initial_balance = int(input())
+deposit_amount = int(input())
+withdrawal_amount = int(input())
+
+account = BankAccount(initial_balance)
+
+account.deposit(deposit_amount)
+account.withdraw(withdrawal_amount)

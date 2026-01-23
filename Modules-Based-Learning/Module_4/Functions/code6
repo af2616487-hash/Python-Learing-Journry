@@ -1,0 +1,8 @@
+n = int(input())
+products = [tuple(input().split()) for _ in range(n)]
+products = [(name, float(price)) for name, price in products]
+
+filtered = list(filter(lambda x: x[1] >= 1000, products))
+discounted = list(map(lambda x: (x[0], round(x[1]*0.85, 2)), filtered))
+
+print(discounted)

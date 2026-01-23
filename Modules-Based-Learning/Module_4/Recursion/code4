@@ -1,0 +1,9 @@
+def print_even(n):
+  if n < 2:
+      return
+  print_even(n - 1)
+  if n % 2 == 0:
+      print(n)
+
+N = int(input().strip())
+print_even(N)

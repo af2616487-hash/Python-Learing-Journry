@@ -1,0 +1,29 @@
+s = input()
+
+letters = []
+digits = []
+
+for ch in s:
+    if ch.isalpha():
+        if ch.lower() in "aeiou":
+            letters.append(ch.upper())
+        else:
+            letters.append(ch.lower())
+    else:
+        digits.append(ch)
+
+digits = [str(9 - int(d)) for d in digits[::-1]]
+
+i = j = 0
+res = []
+
+while i < len(letters) and j < len(digits):
+    res.append(letters[i])
+    res.append(digits[j])
+    i += 1
+    j += 1
+
+res.extend(letters[i:])
+res.extend(digits[j:])
+
+print("".join(res))

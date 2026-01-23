@@ -1,0 +1,48 @@
+import sys
+
+class InventoryItem:
+    def __init__(self, item_name):
+        self.__item_name = item_name
+        self.__stock = 0
+
+    def restock(self, quantity):
+        if quantity > 0:
+            self.__stock += quantity
+
+    def sell(self, quantity):
+        if quantity <= self.__stock:
+            self.__stock -= quantity
+            return self.__stock
+        else:
+            return "Insufficient stock"
+
+    def get_stock(self):
+        return self.__stock
+
+    def get_item_name(self):
+        return self.__item_name
+
+def solve():
+    data = sys.stdin.read().split()
+    if not data:
+        return
+    
+    item_name = data[0]
+    num_ops = int(data[1])
+    
+    item = InventoryItem(item_name)
+    
+    idx = 2
+    for _ in range(num_ops):
+        operation = data[idx]
+        quantity = int(data[idx+1])
+        idx += 2
+        
+        if operation == "restock":
+            item.restock(quantity)
+        elif operation == "sell":
+            result = item.sell(quantity)
+            print(result)
+
+if __name__ == "__main__":
+    solve()

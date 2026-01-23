@@ -1,0 +1,15 @@
+def top_scorers(students):
+  max_score = -1
+  for score in students.values():
+    if score > max_score:
+      max_score = score
+  result = [name for name, score in students.items() if score == max_score]
+  return sorted(result)
+
+n = int(input())
+students = {}
+for _ in range(n):
+    name, score = input().split()
+    students[name] = int(score)
+
+print(top_scorers(students))

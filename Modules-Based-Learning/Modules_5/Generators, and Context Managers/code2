@@ -1,0 +1,19 @@
+import sys
+
+def solve():
+    try:
+        input_data = sys.stdin.read().split()
+        if not input_data:
+            return
+        
+        n = int(input_data[0])
+        labels = input_data[1:]
+        
+        published_count = labels.count("published")
+        print(published_count)
+        
+    except (EOFError, ValueError, IndexError):
+        pass
+
+if __name__ == "__main__":
+    solve()

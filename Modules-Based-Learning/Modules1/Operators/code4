@@ -1,0 +1,8 @@
+a_int = int(input())
+b_int = int(input())
+a = bool(a_int)
+b = bool(b_int)
+print(a and b)
+print(a or b)
+print(not a)
+print(not b)

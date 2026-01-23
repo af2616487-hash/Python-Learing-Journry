@@ -1,0 +1,33 @@
+from abc import ABC, abstractmethod
+
+class TransportMode(ABC):
+    @abstractmethod
+    def calculateMonthlyFee(self):
+        pass
+
+class Bus(TransportMode):
+    def calculateMonthlyFee(self):
+        return 1500
+
+class Van(TransportMode):
+    def calculateMonthlyFee(self):
+        return 2000
+
+class Cycle(TransportMode):
+    def calculateMonthlyFee(self):
+        return 0
+
+
+T = int(input())
+
+for _ in range(T):
+    mode = input().strip()
+
+    if mode == "Bus":
+        transport = Bus()
+    elif mode == "Van":
+        transport = Van()
+    elif mode == "Cycle":
+        transport = Cycle()
+
+    print(transport.calculateMonthlyFee())

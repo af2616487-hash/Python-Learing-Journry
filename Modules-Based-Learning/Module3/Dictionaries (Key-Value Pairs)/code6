@@ -1,0 +1,9 @@
+records = input().split()
+sales = {}
+
+for record in records:
+    title, count = record.split(":")
+    count = int(count)
+    sales[title] = sales.get(title, 0) + count
+
+print(sales)

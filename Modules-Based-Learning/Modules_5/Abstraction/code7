@@ -1,0 +1,35 @@
+from abc import ABC, abstractmethod
+
+class PaymentMethod(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+
+class CreditCardPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid {amount} using Credit Card")
+
+
+class UPIPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid {amount} using UPI")
+
+
+try:
+    method = input().strip()
+    amount = int(input().strip())
+except:
+    method = ""
+    amount = 0
+
+
+payment = None
+
+if method == "CreditCard":
+    payment = CreditCardPayment()
+elif method == "UPI":
+    payment = UPIPayment()
+
+if payment:
+    payment.pay(amount)

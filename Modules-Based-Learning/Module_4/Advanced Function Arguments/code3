@@ -1,0 +1,19 @@
+def greet_user(name, greeting="Hello"):
+  print(f"{greeting}, {name}!")
+
+parts = input().strip().split()
+
+if len(parts) == 1:
+    name = parts[0]
+    if name.isalpha():
+        greet_user(name)
+    else:
+        print("Invalid input format.")
+elif len(parts) == 2:
+    name, greeting = parts
+    if name.isalpha() and greeting.isalpha():
+        greet_user(name, greeting)
+    else:
+        print("Invalid input format.")
+else:
+    print("Invalid input format.")

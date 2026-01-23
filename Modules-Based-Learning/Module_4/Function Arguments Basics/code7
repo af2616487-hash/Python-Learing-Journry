@@ -1,0 +1,23 @@
+def grade_student(name, score, passing_score=40, grade='F'):
+ result = "Passed" if score >= passing_score else "Failed"
+ return f"{name}: {result} with grade {grade}"
+
+name = input().strip()
+score = int(input().strip())
+
+passing_score = 40
+grade = 'F'
+
+try:
+    extra = input().strip()
+    parts = extra.split()
+    for part in parts:
+        key, value = part.split('=')
+        if key == "passing_score":
+            passing_score = int(value)
+        elif key == "grade":
+            grade = value
+except:
+    pass
+
+print(grade_student(name, score, passing_score=passing_score, grade=grade))

@@ -1,0 +1,34 @@
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def calculateToll(self, distance):
+        pass
+
+class Car(Vehicle):
+    def calculateToll(self, distance):
+        return distance * 1
+
+class Bus(Vehicle):
+    def calculateToll(self, distance):
+        return distance * 2
+
+class Truck(Vehicle):
+    def calculateToll(self, distance):
+        return distance * 3
+
+
+T = int(input())
+
+for _ in range(T):
+    vehicle_type = input().strip()
+    distance = int(input())
+
+    if vehicle_type == "Car":
+        vehicle = Car()
+    elif vehicle_type == "Bus":
+        vehicle = Bus()
+    elif vehicle_type == "Truck":
+        vehicle = Truck()
+
+    print(vehicle.calculateToll(distance))

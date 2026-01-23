@@ -1,0 +1,47 @@
+from abc import ABC, abstractmethod
+
+class Course(ABC):
+    @abstractmethod
+    def getGrade(self):
+        pass
+
+class TheoryCourse(Course):
+    def __init__(self, scores):
+        self.scores = scores
+
+    def getGrade(self):
+        avg = sum(self.scores) / 3
+
+        if avg >= 90:
+            return "A"
+        elif avg >= 75:
+            return "B"
+        elif avg >= 60:
+            return "C"
+        else:
+            return "F"
+
+class LabCourse(Course):
+    def __init__(self, result):
+        self.result = result
+
+    def getGrade(self):
+        if self.result == 1:
+            return "Pass"
+        else:
+            return "Fail"
+
+
+T = int(input())
+
+for _ in range(T):
+    course_type = input().strip()
+
+    if course_type == "TheoryCourse":
+        scores = list(map(int, input().split()))
+        course = TheoryCourse(scores)
+    elif course_type == "LabCourse":
+        result = int(input())
+        course = LabCourse(result)
+
+    print(course.getGrade())

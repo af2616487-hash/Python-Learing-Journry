@@ -1,0 +1,23 @@
+class Animal:
+    def speak(self):
+        print("I am an animal")
+
+class Dog(Animal):
+    def speak(self):
+        print("I am a dog")
+
+class Cat(Animal):
+    def speak(self):
+        print("I am a cat")
+
+# Main execution
+choice = input().strip().lower()
+
+if choice == "dog":
+    dog = Dog()
+    dog.speak()
+elif choice == "cat":
+    cat = Cat()
+    cat.speak()
+else:
+    print("Invalid Input")

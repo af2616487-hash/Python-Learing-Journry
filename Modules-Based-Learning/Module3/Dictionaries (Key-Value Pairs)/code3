@@ -1,0 +1,11 @@
+n = int(input())
+original = {}
+for _ in range(n):
+    key = input()
+    value = input()
+    original[key] = value
+
+extract_keys = input().split()
+new_dict = {k: original[k] for k in extract_keys if k in original}
+
+print(new_dict)

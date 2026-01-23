@@ -1,0 +1,9 @@
+n = int(input())
+m = int(input())
+
+for i in range(n, m + 1):
+    if i == 3:
+        print("Skip 3!")
+        pass
+    else:
+        print(i)

@@ -1,0 +1,28 @@
+n = int(input())
+t = tuple(map(int, input().split()))
+
+prime_elements = []
+for i in range(2, len(t)):
+    is_prime = True
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            is_prime = False
+            break
+    if is_prime:
+        prime_elements.append(t[i])
+prime_tuple = tuple(prime_elements)
+
+unique_elements = []
+for x in prime_tuple:
+    if x not in unique_elements:
+        unique_elements.append(x)
+unique_tuple = tuple(unique_elements)
+
+sum_unique = sum(unique_tuple)
+sliced_tuple = t[0::3]
+sum_sliced = sum(sliced_tuple)
+
+if sum_unique > sum_sliced:
+    print("Pattern Matched")
+else:
+    print("Pattern Mismatch")

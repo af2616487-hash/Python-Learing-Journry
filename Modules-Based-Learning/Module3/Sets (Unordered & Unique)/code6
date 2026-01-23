@@ -1,0 +1,8 @@
+total = set(input().split())
+assigned = set(input().split())
+new_req = set(input().split())
+
+available = total - assigned
+assigned |= (new_req & available)
+
+print(sorted(assigned))

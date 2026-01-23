@@ -1,0 +1,11 @@
+def full_name(first, last, sep=" "):
+  return first + sep + last
+
+parts = input().split()
+
+if len(parts) == 2:
+    first, last = parts
+    print(full_name(first, last))
+else:
+    first, last, sep = parts
+    print(full_name(first, last, sep=sep))

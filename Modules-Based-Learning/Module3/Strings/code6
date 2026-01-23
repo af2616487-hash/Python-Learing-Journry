@@ -1,0 +1,4 @@
+emails = input().split()
+cleaned = [e.strip().lower() for e in emails]
+sorted_emails = sorted(cleaned, key=lambda x: x.split('@')[1])
+print(sorted_emails)

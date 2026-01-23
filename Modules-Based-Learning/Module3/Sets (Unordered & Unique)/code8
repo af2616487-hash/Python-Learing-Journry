@@ -1,0 +1,91 @@
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    n = int(input_data[ptr])
+    ptr += 1
+    master_catalog = {} 
+    available_books = {} 
+    for _ in range(n):
+        isbn = input_data[ptr]
+        genre = input_data[ptr+1]
+        master_catalog[isbn] = genre
+        available_books[isbn] = genre
+        ptr += 2
+        
+    borrowed_books = {}  
+    borrowed_genres_history = {} 
+    m = int(input_data[ptr])
+    ptr += 1
+    for _ in range(m):
+        status = input_data[ptr]
+        isbn = input_data[ptr+1]
+        ptr += 2
+        if status not in borrowed_books:
+            borrowed_books[status] = set()
+            borrowed_genres_history[status] = set()
+            
+        if isbn in available_books:
+            print(f"Book {isbn} borrowed.")
+            genre = available_books[isbn]
+            borrowed_books[status].add(isbn)
+            borrowed_genres_history[status].add(genre)
+            del available_books[isbn]
+        else:
+            print(f"Book {isbn} not available.")
+    k_count = int(input_data[ptr])
+    ptr += 1
+    for _ in range(k_count):
+        op = input_data[ptr].lower()
+        ptr += 1
+        
+        if op == "borrow":
+            status = input_data[ptr]
+            isbn = input_data[ptr+1]
+            ptr += 2
+            
+            if status not in borrowed_books:
+                borrowed_books[status] = set()
+                borrowed_genres_history[status] = set()
+            
+            requested_genre = master_catalog.get(isbn)
+            has_genre = any(master_catalog[b_isbn] == requested_genre for b_isbn in borrowed_books[status])
+            
+            if has_genre:
+                print(f"Student already has a book from genre {requested_genre}.")
+            elif isbn in available_books:
+                print(f"Book {isbn} borrowed.")
+                borrowed_books[status].add(isbn)
+                borrowed_genres_history[status].add(requested_genre)
+                del available_books[isbn]
+            else:
+                print(f"Book {isbn} not available.")
+                
+        elif op == "return":
+            status = input_data[ptr]
+            isbn = input_data[ptr+1]
+            ptr += 2
+            print(f"Book {isbn} not found in borrowed list.")
+                
+        elif op == "suggest":
+            status = input_data[ptr]
+            ptr += 1
+            suggested = []
+            if status in borrowed_genres_history:
+                history = borrowed_genres_history[status]
+                for lib_isbn in sorted(available_books.keys()):
+                    if available_books[lib_isbn] in history:
+                        suggested.append(lib_isbn)
+            
+            if not suggested:
+                print(f"Suggested books for {status}: set()")
+            else:
+                formatted = "{" + ", ".join(f"'{x}'" for x in sorted(suggested)) + "}"
+                print(f"Suggested books for {status}: {formatted}")
+
+if __name__ == "__main__":
+    solve()

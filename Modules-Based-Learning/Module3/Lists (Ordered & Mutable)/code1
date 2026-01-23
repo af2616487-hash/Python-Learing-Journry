@@ -1,0 +1,7 @@
+n = input()
+
+num_ = [int(x) for x in n.split()]
+
+largest = max(num_)
+
+print(largest)

@@ -1,0 +1,15 @@
+n = int(input())
+temp = n
+prime_power_sum = 0
+d = 2
+while d * d <= temp:
+    if temp % d == 0:
+        current_factor_value = 1
+        while temp % d == 0:
+            current_factor_value *= d
+            temp //= d
+        prime_power_sum += current_factor_value
+    d += 1
+if temp > 1:
+    prime_power_sum += temp
+print(prime_power_sum)
