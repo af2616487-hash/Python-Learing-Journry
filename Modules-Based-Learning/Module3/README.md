@@ -331,14 +331,12 @@ print(count)
 
 
 #Code5) 
-s = list(map(int, input().split()))
+s = set(map(int, input().split()))
 x = int(input())
 
-if x in s:
-    s.remove(x)
+s.discard(x)
 
-s = sorted(s)
-print("{" + ", ".join(map(str, s)) + "}")
+print(s)
 
 
 #Code6) 
