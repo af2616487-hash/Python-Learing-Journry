@@ -1,24 +1,23 @@
-n, k = map(int, input().split())
-commands = [input().strip() for _ in range(n)]
-escaped = False
-i = 0
-while i < n:
-    cmd = commands[i]
-    if cmd == "MOVE":
-        i += 1
-        continue
-    elif cmd == "JUMP":
-        i += k + 1
-        continue
-    elif cmd == "IGNORE":
-        pass
-    elif cmd == "BLOCK":
-        break
-    elif cmd == "END":
-        escaped = True
-        break
-    i += 1
-if escaped:
-    print("ESCAPED")
+security_clearance, biometric_score, access_code = map(int, input().split())
+
+secur_ok = False
+
+if biometric_score > 85:
+  if security_clearance >= 5:
+    secur_ok = True
+elif 60 <= biometric_score <= 85:
+  if security_clearance >= 7:
+    secur_ok = True
 else:
-    print("TRAPPED")
+  if security_clearance == 10:
+    secur_ok = True
+
+code_str = str(access_code)
+digit_sum = sum(int(d) for d in code_str)
+
+code_ok = (access_code % 2 == 0) and (digit_sum % 5 == 0)
+
+if secur_ok and code_ok:
+  print("Access Granted")
+else:
+  print("Access Denied")
